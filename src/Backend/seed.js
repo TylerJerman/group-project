@@ -1,4 +1,4 @@
-import { User, Recipe } from './model.js';
+import { User, Recipe, Rating, Comment, db } from './model.js';
 
 await db.sync({ force: true})
 
@@ -47,40 +47,40 @@ await db.sync({ force: true})
     image: 'https://i2.wp.com/blog.suvie.com/wp-content/uploads/2020/02/Sunnyside-egg.jpg?fit=1000%2C664&ssl=1'
   });
 
-  await Ratings.create({
+  await Rating.create({
     ratingId: 1,
     userName: 'TylerJerman',
     review: 'Eggs are pretty chill',
     score: 5
   });
 
-  await Ratings.create({
+  await Rating.create({
     ratingId: 2,
     userName: 'SamDorius',
     review: 'Cereal is pretty chill',
     score: 5
   });
 
-  await Ratings.create({
+  await Rating.create({
     ratingId: 3,
     userName: 'JensCox',
     review: 'Toast is pretty chill',
     score: 5
   });
 
-  await Comments.create({
+  await Comment.create({
     commentId: 1,
     userName: 'TylerJerman',
     message: 'Eggs are pretty dope'
   });
 
-  await Comments.create({
+  await Comment.create({
     commentId: 2,
     userName: 'SamDorius',
     message: 'Cereal is pretty chill'
   });
 
-  await Comments.create({
+  await Comment.create({
     commentId: 3,
     userName: 'JensCox',
     message: 'Toast is pretty dope'

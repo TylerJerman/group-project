@@ -4,24 +4,24 @@ import connectToDB from "./db.js";
 
 export const db = await connectToDB("postgresql:///recipes");
 
-export class Users extends Model {
+export class User extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
 }
 
-export class Recipes extends Model {
+export class Recipe extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
 }
 
-export class Ratings extends Model {
+export class Rating extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
 }
-export class Comments extends Model {
+export class Comment extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
@@ -29,7 +29,7 @@ export class Comments extends Model {
 
 // user model
 
-Users.init(
+User.init(
   {
     userId: {
       type: DataTypes.INTEGER,
@@ -57,7 +57,7 @@ Users.init(
 
 // recipe model
 
-Recipes.init(
+Recipe.init(
   {
     recipeId: {
       type: DataTypes.INTEGER,
@@ -82,7 +82,7 @@ Recipes.init(
 
 // rating model
 
-Ratings.init(
+Rating.init(
   {
     ratingId: {
       type: DataTypes.INTEGER,
@@ -107,7 +107,7 @@ Ratings.init(
 
 // comment model
 
-Comments.init(
+Comment.init(
   {
     commentId: {
       type: DataTypes.INTEGER,
@@ -128,20 +128,21 @@ Comments.init(
 );
 
 // users has many recipes 
-Users.hasMany(Recipes, { foreignKey: 'userId' });
+User.hasMany(Recipe, { foreignKey: 'userId' });
 // user has many comments
-Users.hasMany(Comments, { foreignKey: 'userId' })
+User.hasMany(Comment, { foreignKey: 'userId' })
 // user has many ratings 
-Users.hasMany(Ratings, { foreignKey: 'userId' })
+User.hasMany(Rating, { foreignKey: 'userId' })
 // recipe belongs to user
-Recipes.belongsTo(Users, { foreignKey: 'userId' });
+Recipe.belongsTo(User, { foreignKey: 'userId' });
 // comments have one user
-Comments.belongsTo(Users, { foreignKey: 'userId' })
+Comment.belongsTo(User, { foreignKey: 'userId' })
 // recipes has many ratings
-Recipes.hasMany(Ratings, { foreignKey: 'recipeId' });
+Recipe.hasMany(Rating, { foreignKey: 'recipeId' });
 // recipes has many comments
-Recipes.hasMany(Comments, { foreignKey: 'recipeId' });
+Recipe.hasMany(Comment, { foreignKey: 'recipeId' });
 // rating belongs to recipe
-Ratings.belongsTo(Recipes, { foreignKey: 'recipeId' })
+Rating.belongsTo(Recipe, { foreignKey: 'recipeId' })
 // comment belongs to recipe
-Comments.belongsTo(Recipes, { foreignKey: 'recipeId' })
+Comment.belongsTo(Recipe, { foreignKey: 'recipeId' })
+
