@@ -130,7 +130,7 @@ Comment.init(
 
 // users has many recipes 
 User.hasMany(Recipe, { foreignKey: 'userId' });
-// user has many coments
+// user has many comments
 User.hasMany(Comment, { foreignKey: 'userId' })
 // user has many ratings 
 User.hasMany(Rating, { foreignKey: 'userId' })
