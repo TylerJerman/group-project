@@ -35,6 +35,7 @@ User.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+      allowNull: false
     },
     firstName: {
       type: DataTypes.STRING,
@@ -145,4 +146,3 @@ Recipe.hasMany(Comment, { foreignKey: 'recipeId' });
 Rating.belongsTo(Recipe, { foreignKey: 'recipeId' })
 // comment belongs to recipe
 Comment.belongsTo(Recipe, { foreignKey: 'recipeId' })
-

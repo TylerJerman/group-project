@@ -1,5 +1,6 @@
 import { User, Recipe, Rating, Comment, db } from './model.js';
 
+
 await db.sync({ force: true})
 
   await User.create({
