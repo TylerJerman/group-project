@@ -104,6 +104,38 @@ app.get('/api/recipes/:id', async (req, res) => {
     }
   });
 
+  //ratings
+app.get('/api/ratings', async (req, res) => {
+    try{
+        const { id } = req.params;
+
+        const rating = await Rating.findOne({ where: { rating: rating }});
+
+        res.json(rating);
+
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({ message: 'Rating has not been gathered' });
+    }
+});
+  //comments
+// app.get('/api/comments/:id', async (req, res) => {
+//     try {
+//       const { id } = req.params;
+
+//       const recipe = await Comment.findOne({ where: { Id: id }});
+      
+//       res.json(recipe);
+
+//     } catch (error) {
+
+//       console.error(error);
+
+//       res.status(500).json({ message: 'Comment has not been gathered' });
+//     }
+//   });
+
 // end routes
 
 
