@@ -59,6 +59,12 @@ export default function LogIn()
             { err.length > 0 &&
                 <div>{errMsg}</div>
             }
+            <div>
+                <Link to='/signup'>No Account? Sign Up</Link>
+            </div>
+            <div>
+                <Link to='/'>Home page</Link>
+            </div>
         </div>
     )
 }
