@@ -1,8 +1,9 @@
 import { User, Recipe, Rating, Comment, db } from './model.js';
 
-
+//waits for the db to be synced before seeding
 await db.sync({ force: true})
 
+//creates a new user 
   await User.create({
     userId: 1,
     firstName: 'Tyler',
@@ -27,6 +28,7 @@ await db.sync({ force: true})
     password: 'censjox'
   });
 
+  //creates a new recipe
   await Recipe.create({
     recipeId: 1,
     userName: 'TylerJerman',
@@ -48,6 +50,7 @@ await db.sync({ force: true})
     image: 'https://i2.wp.com/blog.suvie.com/wp-content/uploads/2020/02/Sunnyside-egg.jpg?fit=1000%2C664&ssl=1'
   });
 
+  //creates a new rating
   await Rating.create({
     ratingId: 1,
     userName: 'TylerJerman',
@@ -69,6 +72,7 @@ await db.sync({ force: true})
     score: 5
   });
 
+  //creates a new comment
   await Comment.create({
     commentId: 1,
     userName: 'TylerJerman',

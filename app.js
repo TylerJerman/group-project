@@ -19,6 +19,7 @@ ViteExpress.config({printViteDevServerHost: true})
 
 // routes 
 
+//sign up route
 app.post('/api/signup', async (req, res) =>
 {
     console.log(req.body)
@@ -43,12 +44,12 @@ app.post('/api/signup', async (req, res) =>
     })
 })
 
-
+//login route
 app.post('/api/logIn', async (req, res) =>
 {
     const {email, password} = req.body
 
-    let customer = await Users.findOne({where: {email: email}, attributes: ['password', "customerId"]})
+    let customer = await User.findOne({where: {email: email}, attributes: ['password', "userId"]})
 
     if (!customer)
     {
@@ -63,9 +64,9 @@ app.post('/api/logIn', async (req, res) =>
         {
             if (result)
             {
-                if (await Users.findOne({where: {email: email, password: hash}}))
+                if (await User.findOne({where: {email: email, password: hash}}))
                 {
-                    res.json({message: "user logged in", id: customer.customerId})
+                    res.json({message: "user logged in", id: customer.userId})
                 }
             }
             else
@@ -77,9 +78,23 @@ app.post('/api/logIn', async (req, res) =>
     }
 })
 
+//recipe page
+app.get('/api/recipes/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      const recipe = await Recipe.findOne({ where: { recipeId: id }, include: [Rating, Comment]});
+      
+      res.json(recipe);
+
+    } catch (error) {
+
+      console.error(error);
+
+      res.status(500).json({ message: 'Recipe has not been gathered' });
+    }
+  });
 
 // end routes
 
-
-
-ViteExpress.listen(app, port, () => console.log('running'))
+ViteExpress.listen(app, port, () => console.log(`running on http://localhost:${port}`));
