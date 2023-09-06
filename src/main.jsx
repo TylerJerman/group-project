@@ -16,12 +16,13 @@ import LogIn from './Frontend/LogIn.jsx';
 import axios from 'axios';
 import store from './store.js'
 import { Provider } from 'react-redux'
+import RecipePage from './Frontend/RecipePage.jsx';
 
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Provider store={store}>
+    
       <Route path="/" element={<App />} >
         <Route index element={<IndexPage />} />
 
@@ -35,21 +36,20 @@ const router = createBrowserRouter(
           }}
         />
 
-        {/* <Route
+        <Route
           path="recipes/:recipeId"
-          element={<Profile />}
+          element={<RecipePage />}
           loader={async ({ params }) => {
             const res = await axios.get(
               `/api/recipes/${params.recipeId}`
             );
-            return { instructor: res.data };
+            return { recipes: res.data };
           }}
-        /> */}
+        />
 
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
       </Route>
-    </Provider>
   )
 );
 
@@ -57,6 +57,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Provider store={store}>
     <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )

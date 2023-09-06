@@ -90,7 +90,9 @@ app.get('/api/recipes/:id', async (req, res) => {
     try {
       const { id } = req.params;
       
-      const recipe = await Recipe.findOne({ where: { recipeId: id }, include: [Rating, Comment]});
+    //   const recipe = await Recipe.findOne({ where: { recipeId: id }, include: [Rating, Comment]});
+
+    const recipe = await Recipe.findByPk(id)
       
       res.json(recipe);
 
