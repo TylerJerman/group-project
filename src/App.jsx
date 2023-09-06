@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Frontend/Home'
 import SignUp from './Frontend/SignUp'
 import LogIn from './Frontend/LogIn'
-import RecipePage from './Frontend/RecipePage'
+import RecipePage from './src/Frontend/RecipePage.jsx'
 function App() {
 
   return (
