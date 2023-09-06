@@ -23,7 +23,8 @@
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "vite-express": "^0.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

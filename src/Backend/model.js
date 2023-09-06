@@ -65,14 +65,20 @@ Recipe.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    userName: {
+    email: {
       type: DataTypes.STRING,
     },
-    recipe: {
+    title: {
+      type: DataTypes.STRING
+    },
+    steps: {
       type: DataTypes.TEXT,
     },
+    ingredients: {
+      type: DataTypes.STRING
+    },
     images: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     }
   },
   {

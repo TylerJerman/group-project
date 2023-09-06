@@ -48,7 +48,7 @@ app.post('/api/logIn', async (req, res) =>
 {
     const {email, password} = req.body
 
-    let customer = await Users.findOne({where: {email: email}, attributes: ['password', "customerId"]})
+    let customer = await User.findOne({where: {email: email}, attributes: ['password', "customerId"]})
 
     if (!customer)
     {
@@ -63,7 +63,7 @@ app.post('/api/logIn', async (req, res) =>
         {
             if (result)
             {
-                if (await Users.findOne({where: {email: email, password: hash}}))
+                if (await User.findOne({where: {email: email, password: hash}}))
                 {
                     res.json({message: "user logged in", id: customer.customerId})
                 }
@@ -75,6 +75,14 @@ app.post('/api/logIn', async (req, res) =>
             }
         })
     }
+})
+
+
+// recipe get route
+app.get('/api/recipes', async (req, res) => {
+    let timeline = await Recipe.findAll()
+
+    res.json(timeline)
 })
 
 
