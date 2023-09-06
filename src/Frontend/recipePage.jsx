@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLoaderData } from 'react-router-dom';
 
 
 export default function RecipePage() {
@@ -28,17 +29,26 @@ export default function RecipePage() {
     }
   };
 
-  if (!recipe) {
-    return <p>Loading...</p>;
-  } else {
+  const {
+    recipes: { title, images, steps, ingredients }, 
+    } = useLoaderData()
+    
+
+  // if (!recipe) {
+  //   return <p>Loading...</p>;
+  // } else {
      return (
       <div>
-        <h5>{fetchRatings}</h5>
-        <h1>{recipe.userName}</h1>
-        <img src={recipe.images} alt={recipe.userName} />
-        <p>{recipe.recipe}</p>
-        <p>{fetchComments}</p>
+//         <h5>{fetchRatings}</h5>
+//         <h1>{recipe.userName}</h1>
+//         <img src={recipe.images} alt={recipe.userName} />
+//         <p>{recipe.recipe}</p>
+//         <p>{fetchComments}</p>
+        <h1>{title}</h1>
+        <img src={images} />
+        <p>{steps}</p>
+        <p>{ingredients}</p>
       </div>
     );
-  }
-}
+     }
+ // }

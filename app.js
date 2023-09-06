@@ -79,12 +79,20 @@ app.post('/api/logIn', async (req, res) =>
     }
 })
 
+app.get('/api/recipes', async (req, res) => {
+    let timeline = await Recipe.findAll()
+
+    res.json(timeline)
+})
+
 //recipe page
 app.get('/api/recipes/:id', async (req, res) => {
     try {
       const { id } = req.params;
+      
+    //   const recipe = await Recipe.findOne({ where: { recipeId: id }, include: [Rating, Comment]});
 
-      const recipe = await Recipe.findOne({ where: { recipeId: id }, include: [Rating, Comment]});
+    const recipe = await Recipe.findByPk(id)
       
       res.json(recipe);
 
@@ -129,5 +137,7 @@ app.get('/api/ratings', async (req, res) => {
 //   });
 
 // end routes
+
+
 
 ViteExpress.listen(app, port, () => console.log(`running on http://localhost:${port}`));
