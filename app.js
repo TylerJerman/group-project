@@ -44,11 +44,11 @@ app.post('/api/signup', async (req, res) =>
 })
 
 
-app.post('/api/logIn', async (req, res) =>
+app.post('/api/login', async (req, res) =>
 {
     const {email, password} = req.body
 
-    let customer = await Users.findOne({where: {email: email}, attributes: ['password', "customerId"]})
+    let customer = await User.findOne({where: {email: email}, attributes: ['password', "userId"]})
 
     if (!customer)
     {
@@ -63,9 +63,9 @@ app.post('/api/logIn', async (req, res) =>
         {
             if (result)
             {
-                if (await Users.findOne({where: {email: email, password: hash}}))
+                if (await User.findOne({where: {email: email, password: hash}}))
                 {
-                    res.json({message: "user logged in", id: customer.customerId})
+                    res.json({message: "user logged in", id: customer.userId})
                 }
             }
             else

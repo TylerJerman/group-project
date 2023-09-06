@@ -43,6 +43,7 @@ export default function SignUp()
 
     return (
         <div>
+            <h1>Sign Up</h1>
             <div>
                 <input type="text" placeholder="email" onChange={(event) => {setEmail(event.target.value)}} />
                 <input type="text" placeholder="password" onChange={(event) => {setPassword(event.target.value)}} />
@@ -55,6 +56,12 @@ export default function SignUp()
             { err.length > 0 &&
                 <div>{errMsg}</div>
             }
+            <div>
+                <Link to="/login">Log in</Link>
+            </div>
+            <div>
+                <Link to="/">Home Page</Link>
+            </div>
         </div>
     )
 }
