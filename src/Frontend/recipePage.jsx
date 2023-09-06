@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function RecipePage() {
+  
   const dispatch = useDispatch();
   const recipe = useSelector(state => state.recipe);
   const comment = useSelector(state => state.comment);
   const id = 1
-  const fetchRecipe = (id) => async (dispatch) => {
+
+  const fetchRecipe = async (id) => {
     try {
       const { data } = await axios.get(`/api/recipes/${id}`);
       dispatch({ type: 'SET_MESSAGE', payload: 'Recipe has been gathered' });
