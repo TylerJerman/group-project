@@ -2,7 +2,7 @@ import { User, Recipe, Rating, Comment, db } from './model.js';
 import userData from '../Data/userData.json' assert { type: 'json' }
 import recipeData from '../Data/recipeData.json' assert { type: 'json' }
 
-
+//waits for the db to be synced before seeding
 await db.sync({ force: true})
 
   // await User.create({
@@ -135,5 +135,3 @@ await db.sync({ force: true})
 
 
   await db.close()
-
- 

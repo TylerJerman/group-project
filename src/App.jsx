@@ -7,6 +7,7 @@ import SignUp from './Frontend/SignUp'
 import LogIn from './Frontend/LogIn'
 import axios from 'axios'
 import { NavLink, Outlet } from 'react-router-dom'
+import RecipePage from './Frontend/RecipePage'
 
 function App() {
 
