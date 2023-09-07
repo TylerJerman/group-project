@@ -3,6 +3,7 @@ import './App.css'
 import { NavLink, Outlet } from 'react-router-dom'
 
 
+
 function App() {
 
   return (
@@ -56,7 +57,10 @@ function App() {
 
       <main>
         <Outlet />
+       
+
       </main>
+    
     </>
   )
 }
