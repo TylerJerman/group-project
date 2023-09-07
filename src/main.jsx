@@ -16,7 +16,7 @@ import LogIn from './Frontend/LogIn.jsx';
 import axios from 'axios';
 import store from './store.js'
 import { Provider } from 'react-redux'
-import RecipePage from './Frontend/RecipePage.jsx';
+import RecipePage from './Frontend/recipePage.jsx';
 
 
 
