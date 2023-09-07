@@ -13,9 +13,9 @@ function App() {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/recipes">timeline</NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/login">Log in</NavLink>
           </li>
