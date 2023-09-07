@@ -24,17 +24,24 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     
       <Route path="/" element={<App />} >
-        <Route index element={<IndexPage />} />
+        <Route index element={<IndexPage />}
+         loader={async () => {
+          const res = await axios.get(`/api/recipes`);
+          return { recipes: res.data };
+        }}
+        
+        />
 
         {/** */}
-        <Route
+        {/* <Route
+          
           path="recipes"
           element={<Timeline />}
           loader={async () => {
             const res = await axios.get(`/api/recipes`);
             return { recipes: res.data };
           }}
-        />
+        /> */}
 
         <Route
           path="recipes/:recipeId"
