@@ -7,6 +7,7 @@ export default function Timeline() {
 
     const recipeListItems = recipes.map(({ recipeId, title, image }) => (
         <li key={recipeId}>
+        <img src={image}/>
         <Link to={`/recipes/${recipeId}`}>{title}</Link>
         </li>
       ));
