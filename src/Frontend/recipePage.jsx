@@ -6,15 +6,15 @@ import { useLoaderData } from 'react-router-dom';
 
 export default function RecipePage() {
 
-  const dispatch = useDispatch();
-  const recipe = useSelector(state => state.recipe);
-  const comment = useSelector(state => state.comment);
-  const id = 1
+  // const dispatch = useDispatch();
+  // const recipe = useSelector(state => state.recipe);
+  // const comment = useSelector(state => state.comment);
+  // const id = 1
 
   const fetchRatings = async (id) => {
     try{
       const {data} = await axios.get(`/api/ratings/${id}`);
-      dispatch({ type: 'SET_MESSAGE', payload: 'Rating has been gathered' });
+      dispatch({ type: 'SET_MESSAGE', payload: 'Recipe has been gathered' });
     } catch (error) {
       dispatch({ type: 'SET_MESSAGE', payload: error });
     }
@@ -39,11 +39,11 @@ export default function RecipePage() {
   // } else {
      return (
       <div>
-         <h5>{fetchRatings}</h5>
-         <h1>{recipe.userName}</h1>
-         <img src={recipe.images} alt={recipe.userName} />
-         <p>{recipe.recipe}</p>
-         <p>{fetchComments}</p>
+//         <h5>{fetchRatings}</h5>
+//         <h1>{recipe.userName}</h1>
+//         <img src={recipe.images} alt={recipe.userName} />
+//         <p>{recipe.recipe}</p>
+//         <p>{fetchComments}</p>
         <h1>{title}</h1>
         <img src={images} />
         <p>{steps}</p>
