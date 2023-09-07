@@ -23,7 +23,7 @@ export default function RecipePage() {
     } = useLoaderData()
     
 
-  // if (!recipe) {
+  // if (!recipes) {
   //   return <p>Loading...</p>;
   // } else {
      return (
