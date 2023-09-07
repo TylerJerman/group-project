@@ -16,7 +16,8 @@ import LogIn from './Frontend/LogIn.jsx';
 import axios from 'axios';
 import store from './store.js'
 import { Provider } from 'react-redux'
-import RecipePage from './Frontend/RecipePage.jsx';
+import RecipePage from './Frontend/recipePage.jsx';
+import RecipeForm from './Frontend/newRecipeForm.jsx';
 
 
 
@@ -24,17 +25,24 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     
       <Route path="/" element={<App />} >
-        <Route index element={<IndexPage />} />
+        <Route index element={<IndexPage />}
+         loader={async () => {
+          const res = await axios.get(`/api/recipes`);
+          return { recipes: res.data };
+        }}
+        
+        />
 
         {/** */}
-        <Route
+        {/* <Route
+          
           path="recipes"
           element={<Timeline />}
           loader={async () => {
             const res = await axios.get(`/api/recipes`);
             return { recipes: res.data };
           }}
-        />
+        /> */}
 
         <Route
           path="recipes/:recipeId"
@@ -49,6 +57,9 @@ const router = createBrowserRouter(
 
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
+        <Route path="new-recipe" element={<RecipeForm />} />
+        
+
       </Route>
   )
 );

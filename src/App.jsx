@@ -1,14 +1,8 @@
-import { useState } from 'react'
+
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Timeline from './Frontend/Timeline'
-import Home from './Frontend/Home'
-import SignUp from './Frontend/SignUp'
-import LogIn from './Frontend/LogIn'
-import RecipePage from './src/Frontend/RecipePage.jsx'
-import axios from 'axios'
 import { NavLink, Outlet } from 'react-router-dom'
-import RecipePage from './Frontend/RecipePage'
+
+
 
 function App() {
 
@@ -20,9 +14,9 @@ function App() {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/recipes">timeline</NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/login">Log in</NavLink>
           </li>
@@ -63,7 +57,10 @@ function App() {
 
       <main>
         <Outlet />
+       
+
       </main>
+    
     </>
   )
 }
