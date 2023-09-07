@@ -17,6 +17,7 @@ import axios from 'axios';
 import store from './store.js'
 import { Provider } from 'react-redux'
 import RecipePage from './Frontend/recipePage.jsx';
+import RecipeForm from './Frontend/newRecipeForm.jsx';
 
 
 
@@ -56,6 +57,9 @@ const router = createBrowserRouter(
 
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
+        <Route path="new-recipe" element={<RecipeForm />} />
+        
+
       </Route>
   )
 );
