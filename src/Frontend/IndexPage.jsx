@@ -21,7 +21,7 @@ export default function Timeline() {
     return (
       <>
         <h1>recipe timeline data</h1>
-        <ul>{recipeListItems}</ul>
+        <div>{recipeListItems}</div>
 
         <RecipeForm onNewRecipe={handleRecipe} />
       </>
