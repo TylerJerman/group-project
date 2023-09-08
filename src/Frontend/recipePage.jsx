@@ -1,22 +1,20 @@
-import axios from 'axios';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import Comments from './Comments.jsx';
 
 
 export default function RecipePage() {
 
-  const {
-    recipes: { title, images, steps, ingredients }, 
-    } = useLoaderData()
+  const {recipe, comments} = useLoaderData();
+  const {recipeId, title, images, steps, ingredients} = recipe
     
-     return (
-      <div>
-        <h1>{title}</h1>
-        <img src={images} />
-        <p>{steps}</p>
-        <p>{ingredients}</p>
-      </div>
-    );
-     }
- // }
+  return (
+    <div>
+      <h1>{title}</h1>
+      <img src={images} />
+      <p>{steps}</p>
+      <p>{ingredients}</p>
+      <Comments comments={comments} recipeId={recipeId} />
+    </div>
+  );
+}

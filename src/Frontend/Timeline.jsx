@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 
 export default function Timeline() {
-    const { recipes } = useLoaderData()
+    const { recipes } = useLoaderData();
 
     const recipeListItems = recipes.map(({ recipeId, title, image }) => (
         <li key={recipeId}>
