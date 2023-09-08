@@ -58,7 +58,7 @@ export default function Timeline() {
     return (
       <>
         <h1>recipe timeline data</h1>
-        <ul>{recipeListItems}</ul>
+        <div>{recipeListItems}</div>
 
         { userName &&
           <Link to='/newrecipe'>new recipe</Link>
@@ -66,4 +66,3 @@ export default function Timeline() {
       </>
     );
   }
-  

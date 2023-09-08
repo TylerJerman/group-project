@@ -1,4 +1,4 @@
-const editButton = ({isEditing, onEditClick, onSaveClick, deleteClick}) => {
+const EditComment = ({isEditing, onEditClick, onSaveClick, deleteClick}) => {
   return isEditing ? (
     <td>
       <button onClick={onSaveClick}>Save</button>
@@ -11,4 +11,4 @@ const editButton = ({isEditing, onEditClick, onSaveClick, deleteClick}) => {
   )
 }
 
-export default editButton
+export default EditComment

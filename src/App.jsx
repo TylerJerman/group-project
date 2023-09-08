@@ -10,7 +10,7 @@ function App() {
     <>
 
       <nav>
-        <ul>
+        <div>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -23,7 +23,7 @@ function App() {
           <li>
             <NavLink to="/signup">Sign up</NavLink>
           </li>
-        </ul>
+        </div>
       </nav> 
 
 

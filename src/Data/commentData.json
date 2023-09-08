@@ -1,37 +1,42 @@
 [
   {
-    "userId": "1",
     "recipeId": "1",
     "commentId": "1",
     "userName": "JaneSmith",
     "message": "This actually looks very good."
   },
   {
+    "recipeId": "1",
     "commentId": "2",
     "userName": "JohnDoe",
     "message": "Good recipe boss."
   },
   {
+    "recipeId": "1",
     "commentId": "3",
     "userName": "JaneSmith",
     "message": "I'm gonna make this for my kids!"
   },
   {
+    "recipeId": "1",
     "commentId": "4",
     "userName": "MikeJohnson",
     "message": "Yayuh i luv toast"
   },
   {
+    "recipeId": "2",
     "commentId": "5",
     "userName": "TreyCorrea",
     "message": "Making this rn"
   },
   {
+    "recipeId": "2",
     "commentId": "6",
     "userName": "MikeJohnson",
     "message": "Yayuh this looks good"
   },
   {
+    "recipeId": "2",
     "commentId": "7",
     "userName": "JohnDoe",
     "message": "Bad recipe boss."
