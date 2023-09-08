@@ -50,7 +50,7 @@ app.post('/api/logIn', async (req, res) =>
 {
     const {email, password} = req.body
 
-    let customer = await User.findOne({where: {email: email}, attributes: ['password', "userId"]})
+    let customer = await User.findOne({where: {email: email}, attributes: ['password', 'firstName', 'lastName', "userId"]})
 
     if (!customer)
     {
@@ -67,7 +67,7 @@ app.post('/api/logIn', async (req, res) =>
             {
                 if (await User.findOne({where: {email: email, password: hash}}))
                 {
-                    res.json({message: "user logged in", id: customer.userId})
+                    res.json({message: "user logged in", id: customer.userId, firstName: customer.firstName, lastName: customer.lastName})
                 }
             }
             else
@@ -105,20 +105,74 @@ app.get('/api/recipes/:id', async (req, res) => {
   });
 
   //ratings
-app.get('/api/ratings', async (req, res) => {
-    try{
-        const { id } = req.params;
+app.post('/api/ratings', async (req, res) => {
+    
+        const {title} = req.body;
 
-        const rating = await Rating.findOne({ where: { rating: rating }});
+        const rating = await Rating.findAll({ where: { recipeName: title }});
 
         res.json(rating);
-
-    } catch (error) {
-        console.error(error);
-
-        res.status(500).json({ message: 'Rating has not been gathered' });
-    }
 });
+
+app.post('/api/upVote', async (req, res) =>
+{
+    const {userName, title} = req.body
+
+    try 
+    {
+        if 
+        ( 
+            await Rating.findOne({ where: {userName: userName, recipeName: title, isUpVote: false}})
+        )
+        {
+            const previousDownVote = await Rating.findOne({ where: {userName: userName, recipeName: title, isUpVote: false}})
+
+            previousDownVote.destroy()
+        }
+
+        const rating = await Rating.create({userName: userName, recipeName: title, isUpVote: true})
+
+        res.json(rating)
+    }
+    catch (error)
+    {
+        console.log(error)
+
+        res.status(500).json({ message: 'Failed to up vote'})
+    }
+})
+
+app.post('/api/downVote', async (req, res) =>
+{
+    const {userName, title} = req.body
+
+    try 
+    {
+        
+        if 
+        (
+            await Rating.findOne({ where: {userName: userName, recipeName: title, isUpVote: true}})
+        )
+        {
+            const previousUpVote = await Rating.findOne({ where: {userName: userName, recipeName: title, isUpVote: true}})
+
+            previousUpVote.destroy()
+        }
+        
+        const rating = await Rating.create({userName: userName, recipeName: title, isUpVote: false})
+
+        res.json({message: "success"})
+    }
+    catch (error)
+    {
+        console.log(error)
+
+        res.status(500).json({ message: 'Failed to up vote'})
+    }
+})
+
+
+
   //comments
 // app.get('/api/comments/:id', async (req, res) => {
 //     try {
