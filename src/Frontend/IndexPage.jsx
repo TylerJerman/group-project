@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import RecipeForm from './newRecipeForm';
 import axios from 'axios';
 
@@ -6,12 +6,6 @@ import axios from 'axios';
 
 export default function Timeline() {
     const { recipes } = useLoaderData()
-
-    const handleRecipe = async (event, formData) => {
-      event.preventDefault();
-
-      const res = await axios.post('/api/new-recipe', formData);
-    }
 
     const recipeListItems = recipes.map(({ recipeId, title, image }) => (
         <li key={recipeId}>
@@ -23,7 +17,7 @@ export default function Timeline() {
         <h1>recipe timeline data</h1>
         <ul>{recipeListItems}</ul>
 
-        <RecipeForm onNewRecipe={handleRecipe} />
+        <Link to='/newrecipe'>new recipe</Link>
       </>
     );
   }
