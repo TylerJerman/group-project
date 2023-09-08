@@ -1,0 +1,12 @@
+[   
+         {
+            "userName": "samdorius",
+            "recipeName": "Cereal",
+            "isUpVote": "false"
+        },
+        {
+            "userName": "samdorius",
+            "recipeName": "Toast",
+            "isUpVote": "true"
+        }
+    ]
