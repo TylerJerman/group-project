@@ -70,7 +70,7 @@ app.post('/api/logIn', async (req, res) =>
                 if (await User.findOne({where: {email: email, password: hash}}))
                 {
                     req.session.userId = customer.userId
-                    res.json({message: "user logged in", id: customer.userId})
+                    res.json({message: "user logged in", id: customer.userId, firstName: customer.firstName, lastName: customer.lastName})
                 }
             }
             else

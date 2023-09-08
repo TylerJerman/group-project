@@ -10,6 +10,7 @@ export default function Timeline() {
     const { recipes } = useLoaderData()
 
     const userName = useSelector((state) => state.userName)
+    console.log(userName)
 
     const dispatch = useDispatch()
 

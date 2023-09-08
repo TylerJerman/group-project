@@ -29,7 +29,7 @@ export default function LogIn()
             if (data.message === 'user not found')
             {
                 setErr('error')
-                setErrMsg(data.message)
+                setErrMsg(datamessage)
             }
             else if (data.message === 'password was incorrect')
             {
@@ -39,6 +39,7 @@ export default function LogIn()
             else
             {
                 let userName = (data.firstName) + (data.lastName)
+                console.log(userName)
                 dispatch({'type': 'SET_USERNAME', 'payload': userName})
                 navigate('/')
             }
