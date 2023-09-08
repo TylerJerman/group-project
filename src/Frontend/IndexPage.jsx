@@ -60,7 +60,9 @@ export default function Timeline() {
         <h1>recipe timeline data</h1>
         <ul>{recipeListItems}</ul>
 
-        <Link to='/newrecipe'>new recipe</Link>
+        { userName &&
+          <Link to='/newrecipe'>new recipe</Link>
+        }
       </>
     );
   }

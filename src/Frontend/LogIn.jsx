@@ -10,10 +10,14 @@ export default function LogIn()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
     const userName = useSelector((state) => state.userName)
+    const reduxEmail = useSelector((state) => state.email)
 
     const [err, setErr] = useState('')
     const [errMsg, setErrMsg] = useState('')
+
+    const [youSure, setYouSure] = useState('')
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -21,6 +25,7 @@ export default function LogIn()
     const ClickLogIn = async () =>
     {
         const user = {email: email, password: password}
+        dispatch({'type': 'SET_EMAIL', 'payload': email})
 
         if (email !== '' && password !== '')
         {
@@ -29,7 +34,7 @@ export default function LogIn()
             if (data.message === 'user not found')
             {
                 setErr('error')
-                setErrMsg(datamessage)
+                setErrMsg(data.message)
             }
             else if (data.message === 'password was incorrect')
             {
@@ -39,7 +44,6 @@ export default function LogIn()
             else
             {
                 let userName = (data.firstName) + (data.lastName)
-                console.log(userName)
                 dispatch({'type': 'SET_USERNAME', 'payload': userName})
                 navigate('/')
             }
@@ -50,6 +54,29 @@ export default function LogIn()
             setErrMsg('please fill out both boxes')
         }
 
+    }
+
+    const areYouSure = () =>
+    {
+        setYouSure('yes')
+    }
+
+    const cancel = () =>
+    {
+        setYouSure('')
+    }
+
+    const deleteAccount = async () =>
+    {
+        dispatch({'type': 'SET_USERNAME', 'payload': ''})
+        const info = {email: reduxEmail}
+        await axios.post('/api/deleteAccount', info)
+    }
+
+    const logOut = () =>
+    {
+        dispatch({'type': 'SET_USERNAME', 'payload': ''})
+        dispatch({'type': 'SET_EMAIL', 'payload': ''})
     }
 
     return (
@@ -76,7 +103,25 @@ export default function LogIn()
             </div>
         }
         { userName &&
-            <h1>You are already logged in</h1>
+            <>
+                <h1>You are already logged in</h1>
+                { youSure.length < 1 &&
+                    <>
+                        <div>
+                            <button onClick={areYouSure}>Delete Account</button>
+                        </div>
+                        <div>
+                            <button onClick={logOut}>Log Out</button>
+                        </div>
+                    </>
+                }
+                { youSure.length > 1 &&
+                    <>
+                        <button onClick={deleteAccount}>Are you sure?</button>
+                        <button onClick={cancel}>Cancel</button>
+                    </>
+                }
+            </>
         }
         </>
     )

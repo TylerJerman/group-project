@@ -244,6 +244,29 @@ app.get('/api/comments/:id', async (req, res) => {
     }
   });
 
+
+app.post('/api/deleteAccount', async (req, res) =>
+{
+    try 
+    {
+        const {email} = req.body
+
+        const user = await User.findOne({ where: {email: email}})
+
+        console.log(user)
+
+        await user.destroy()
+
+        res.json({ message: 'success'})
+    }
+    catch (error)
+    {
+        console.error(error)
+
+        res.status(500).json({ message: 'Account was not deleted'})
+    }
+})
+
 // end routes
 
 
