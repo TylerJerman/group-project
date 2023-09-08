@@ -2,10 +2,13 @@
 import RecipeForm from "./newRecipeForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"
 
 export default function NewRecipePage() {
 
     const navigate = useNavigate()
+
+    const userName = useSelector((state) => state.userName)
 
     const handleRecipe = async (event, formData) => {
       event.preventDefault();
@@ -18,11 +21,12 @@ export default function NewRecipePage() {
 
       return (
         <>
-
-        <h1>nnew recipe</h1>
-        <RecipeForm onNewRecipe={handleRecipe} />
-        
-        
+          { userName &&
+            <>
+              <h1>New Recipe</h1>
+              <RecipeForm onNewRecipe={handleRecipe} />
+            </>
+          }
         </>
       )
 }

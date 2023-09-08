@@ -52,7 +52,7 @@ app.post('/api/logIn', async (req, res) =>
 {
     const {email, password} = req.body
 
-    let customer = await User.findOne({where: {email: email}, attributes: ['password', "userId"]})
+    let customer = await User.findOne({where: {email: email}, attributes: ['password', 'firstName', 'lastName', "userId"]})
 
     if (!customer)
     {
@@ -70,7 +70,7 @@ app.post('/api/logIn', async (req, res) =>
                 if (await User.findOne({where: {email: email, password: hash}}))
                 {
                     req.session.userId = customer.userId
-                    res.json({message: "user logged in", id: customer.userId})
+                    res.json({message: "user logged in", id: customer.userId, firstName: customer.firstName, lastName: customer.lastName})
                 }
             }
             else
@@ -131,21 +131,92 @@ app.get('/api/recipes/:id', async (req, res) => {
     res.json(`Recipe ${id} has been deleted`)
   })
 
-  //ratings
-app.get('/api/ratings', async (req, res) => {
-    try{
-        const { id } = req.params;
+  // edit recipe
+  app.post('/api/edit-recipe/recipes/:id', async (req, res) => {
+    const { id } = req.params
+    const { title, steps, ingredients, images } = req.body
 
-        const rating = await Rating.findOne({ where: { rating: rating }});
+    const recipe = await Recipe.findByPk(id)
+
+    recipe.title = title 
+    recipe.steps = steps 
+    recipe.ingredients = ingredients 
+    recipe.images = images 
+
+    await recipe.save()
+
+    res.json(recipe)
+  })
+
+  //ratings
+app.post('/api/ratings', async (req, res) => {
+    
+        const {title} = req.body;
+
+        const rating = await Rating.findAll({ where: { recipeName: title }});
 
         res.json(rating);
-
-    } catch (error) {
-        console.error(error);
-
-        res.status(500).json({ message: 'Rating has not been gathered' });
-    }
 });
+
+app.post('/api/upVote', async (req, res) =>
+{
+    const {userName, title} = req.body
+
+    try 
+    {
+        if 
+        ( 
+            await Rating.findOne({ where: {userName: userName, recipeName: title, isUpVote: false}})
+        )
+        {
+            const previousDownVote = await Rating.findOne({ where: {userName: userName, recipeName: title, isUpVote: false}})
+
+            previousDownVote.destroy()
+        }
+
+        const rating = await Rating.create({userName: userName, recipeName: title, isUpVote: true})
+
+        res.json(rating)
+    }
+    catch (error)
+    {
+        console.log(error)
+
+        res.status(500).json({ message: 'Failed to up vote'})
+    }
+})
+
+app.post('/api/downVote', async (req, res) =>
+{
+    const {userName, title} = req.body
+
+    try 
+    {
+        
+        if 
+        (
+            await Rating.findOne({ where: {userName: userName, recipeName: title, isUpVote: true}})
+        )
+        {
+            const previousUpVote = await Rating.findOne({ where: {userName: userName, recipeName: title, isUpVote: true}})
+
+            previousUpVote.destroy()
+        }
+        
+        const rating = await Rating.create({userName: userName, recipeName: title, isUpVote: false})
+
+        res.json({message: "success"})
+    }
+    catch (error)
+    {
+        console.log(error)
+
+        res.status(500).json({ message: 'Failed to up vote'})
+    }
+})
+
+
+
   //comments
 app.get('/api/comments/:id', async (req, res) => {
     try {
@@ -198,6 +269,29 @@ app.get('/api/comments/:id', async (req, res) => {
 //       res.status(500).json({ error: 'Failed to clear cart.' });
 //     }
 //   });
+
+
+app.post('/api/deleteAccount', async (req, res) =>
+{
+    try 
+    {
+        const {email} = req.body
+
+        const user = await User.findOne({ where: {email: email}})
+
+        console.log(user)
+
+        await user.destroy()
+
+        res.json({ message: 'success'})
+    }
+    catch (error)
+    {
+        console.error(error)
+
+        res.status(500).json({ message: 'Account was not deleted'})
+    }
+})
 
 // end routes
 
