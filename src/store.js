@@ -19,6 +19,9 @@ const reducer = (state = initialState, action) =>
         case 'SET_RATING_MESSAGE':
             let ratingMessageState = { ...state, ratingMessage: action.payload }
             return ratingMessageState
+        case 'SET_EMAIL':
+            let emailState = { ...state, email: action.payload }
+            return emailState
         // add new cases below
         default:
             return state

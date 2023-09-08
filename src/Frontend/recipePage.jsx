@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Comments from './Comments.jsx';
+import axios from 'axios';
 
 
 export default function RecipePage() {
