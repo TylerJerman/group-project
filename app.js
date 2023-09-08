@@ -108,8 +108,8 @@ app.get('/api/recipes/:id', async (req, res) => {
     //   const recipe = await Recipe.findOne({ where: { recipeId: id }, include: [Rating, Comment]});
 
     const recipe = await Recipe.findByPk(id)
-      
-      res.json(recipe);
+      const comments = await Comment.findAll({where: { recipeId: id}});
+      res.json({recipe, comments});
 
     } catch (error) {
 
@@ -135,21 +135,20 @@ app.get('/api/ratings', async (req, res) => {
     }
 });
   //comments
-// app.get('/api/comments/:id', async (req, res) => {
-//     try {
-//       const { id } = req.params;
+app.get('/api/comments/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
 
-//       const recipe = await Comment.findOne({ where: { Id: id }});
-      
-//       res.json(recipe);
+      const recipe = await Comment.findByPk({id});
+      res.json(recipe);
 
-//     } catch (error) {
+    } catch (error) {
 
-//       console.error(error);
+      console.error(error);
 
-//       res.status(500).json({ message: 'Comment has not been gathered' });
-//     }
-//   });
+      res.status(500).json({ message: 'Comment has not been gathered' });
+    }
+  });
 
 // end routes
 
