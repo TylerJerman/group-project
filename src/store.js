@@ -10,6 +10,15 @@ const reducer = (state = initialState, action) =>
         case 'SET_MESSAGE':
             let newState = { ...state, message: action.payload }
             return newState
+        case 'SET_USERNAME':
+            let userNameState = { ...state, userName: action.payload }
+            return userNameState
+        case 'SET_RATING':
+            let ratingState = { ...state, rating: action.payload }
+            return ratingState
+        case 'SET_RATING_MESSAGE':
+            let ratingMessageState = { ...state, ratingMessage: action.payload }
+            return ratingMessageState
         // add new cases below
         default:
             return state
