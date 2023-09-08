@@ -119,6 +119,29 @@ app.get('/api/recipes/:id', async (req, res) => {
     }
   });
 
+  // delete recipe
+  app.post('/api/delete-recipe/recipes/:id', async (req, res) => {
+    const { id } = req.params
+    await Recipe.destroy({
+        where: {
+            recipeId: id
+        }
+    })
+
+    res.json(`Recipe ${id} has been deleted`)
+  })
+
+
+
+
+
+
+
+
+
+
+
+
   //ratings
 app.get('/api/ratings', async (req, res) => {
     try{
