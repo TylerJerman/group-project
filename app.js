@@ -131,6 +131,23 @@ app.get('/api/recipes/:id', async (req, res) => {
     res.json(`Recipe ${id} has been deleted`)
   })
 
+  // edit recipe
+  app.post('/api/edit-recipe/recipes/:id', async (req, res) => {
+    const { id } = req.params
+    const { title, steps, ingredients, images } = req.body
+
+    const recipe = await Recipe.findByPk(id)
+
+    recipe.title = title 
+    recipe.steps = steps 
+    recipe.ingredients = ingredients 
+    recipe.images = images 
+
+    await recipe.save()
+
+    res.json(recipe)
+  })
+
 
 
 
