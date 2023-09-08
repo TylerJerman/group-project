@@ -1,7 +1,6 @@
 import { User, Recipe, Rating, Comment, db } from "./model.js";
 import userData from "../Data/userData.json" assert { type: "json" };
 import recipeData from "../Data/recipeData.json" assert { type: "json" };
-import ratingsData from "../Data/ratingsData.json" assert { type: "json" };
 import commentData from "../Data/commentData.json" assert { type: "json"};
 
 //waits for the db to be synced before seeding
@@ -134,22 +133,6 @@ const recipesInDb = await Promise.all(
   })
 );
 
-
-const ratingsInDb = await Promise.all(
-  ratingsData.map((rating) => {
-    const {userName, recipeName, isUpVote} = rating;
-
-    const newRating = Rating.create({
-      userName,
-      recipeName,
-      isUpVote
-    })
-
-    return newRating
-  })
-);
-
-  
 const commentsInDb = await Promise.all(
   commentData.map((recipe) => {
     const { 

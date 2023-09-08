@@ -98,16 +98,13 @@ Rating.init(
     },
     userName: {
       type: DataTypes.STRING,
-      allowNull: false
     },
-    recipeName: {
-      type: DataTypes.STRING,
-      allowNull: false
+    review: {
+      type: DataTypes.TEXT,
     },
-    isUpVote: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-    }
+    score: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     modelName: "ratings",

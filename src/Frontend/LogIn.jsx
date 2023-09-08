@@ -2,7 +2,6 @@ import { useState } from "react"
 import axios from "axios"
 import { Link, Navigate } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
 
 
 export default function LogIn()
@@ -10,13 +9,11 @@ export default function LogIn()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const userName = useSelector((state) => state.userName)
 
     const [err, setErr] = useState('')
     const [errMsg, setErrMsg] = useState('')
 
     const navigate = useNavigate()
-    const dispatch = useDispatch()
 
     const ClickLogIn = async () =>
     {
@@ -38,9 +35,7 @@ export default function LogIn()
             }
             else
             {
-                let userName = (data.firstName) + (data.lastName)
-                dispatch({'type': 'SET_USERNAME', 'payload': userName})
-                navigate('/')
+               navigate('/')
             }
         }
         else
@@ -52,31 +47,24 @@ export default function LogIn()
     }
 
     return (
-        <>
-        { !userName && 
+        <div>
+            <h1>Log In</h1>
             <div>
-                <h1>Log In</h1>
-                <div>
-                    <input type="text" placeholder="email" onChange={(event) => {setEmail(event.target.value)}}/>
-                </div>
-                <div>
-                    <input type="text" placeholder="password" onChange={(event) => {setPassword(event.target.value)}}/>
-                </div>
-                <input type="submit" onClick={ClickLogIn}/>
-                { err.length > 0 &&
-                    <div>{errMsg}</div>
-                }
-                <div>
-                    <Link to='/signup'>No Account? Sign Up</Link>
-                </div>
-                <div>
-                    <Link to='/'>Home page</Link>
-                </div>
+                <input type="text" placeholder="email" onChange={(event) => {setEmail(event.target.value)}}/>
             </div>
-        }
-        { userName &&
-            <h1>You are already logged in</h1>
-        }
-        </>
+            <div>
+                <input type="text" placeholder="password" onChange={(event) => {setPassword(event.target.value)}}/>
+            </div>
+            <input type="submit" onClick={ClickLogIn}/>
+            { err.length > 0 &&
+                <div>{errMsg}</div>
+            }
+            <div>
+                <Link to='/signup'>No Account? Sign Up</Link>
+            </div>
+            <div>
+                <Link to='/'>Home page</Link>
+            </div>
+        </div>
     )
 }
