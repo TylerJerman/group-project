@@ -131,17 +131,6 @@ app.get('/api/recipes/:id', async (req, res) => {
     res.json(`Recipe ${id} has been deleted`)
   })
 
-
-
-
-
-
-
-
-
-
-
-
   //ratings
 app.get('/api/ratings', async (req, res) => {
     try{
@@ -162,16 +151,53 @@ app.get('/api/comments/:id', async (req, res) => {
     try {
       const { id } = req.params;
 
-      const recipe = await Comment.findByPk({id});
-      res.json(recipe);
+      const findComment = await Comment.findByPk({id});
+      res.json(findComment);
 
     } catch (error) {
 
       console.error(error);
 
-      res.status(500).json({ message: 'Comment has not been gathered' });
+      res.status(500).json({ message: 'Comments have not been gathered' });
     }
   });
+
+  app.post('/api/comments/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const createComment = await Comment.create({id});
+        res.json(createComment);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Comment has not been created'})
+    }
+  });
+
+//   app.post('/api/delete-comment/comments/:id', async (req, res) => {
+//       const { id } = req.params
+//       if (!id) {
+//           return res.status(400).json({ message: 'Missing commentId' });
+//         } try {
+//             await Comment.destroy({ where: { commentId: id }});
+//             res.json({ success: true });
+//         } catch (error) {
+//             console.error("Error deleting comment", error);
+//             res.status(500).json({ error: 'Failed to delete the comment' })
+
+//   app.delete('/api/cart/clear/:userId', async (req, res) => {
+//     const { userId } = req.params;
+//     if (!userId) {
+//       return res.status(400).json({ error: 'Missing userId.' });
+//     }
+//     try {
+//       await Cart.destroy({ where: { user_Id: userId } });
+//       res.json({ success: true });
+//     } catch (error) {
+//       console.error("Error clearing cart:", error);
+//       res.status(500).json({ error: 'Failed to clear cart.' });
+//     }
+//   });
 
 // end routes
 
