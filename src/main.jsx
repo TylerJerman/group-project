@@ -19,7 +19,7 @@ import { Provider } from 'react-redux'
 import RecipePage from './Frontend/recipePage.jsx';
 import RecipeForm from './Frontend/newRecipeForm.jsx';
 import NewRecipePage from './Frontend/newRecipePage.jsx';
-
+import Comments from './Frontend/Comments.jsx';
 
 
 const router = createBrowserRouter(
@@ -52,7 +52,8 @@ const router = createBrowserRouter(
             const res = await axios.get(
               `/api/recipes/${params.recipeId}`
             );
-            return { recipes: res.data };
+            console.log(res.data)
+            return { recipe: res.data.recipe, comments: res.data.comments };
           }}
         />
 
@@ -60,6 +61,7 @@ const router = createBrowserRouter(
         <Route path="login" element={<LogIn />} />
         <Route path="newrecipe" element={<NewRecipePage />} />
         
+
 
       </Route>
   )

@@ -1,6 +1,7 @@
 import { User, Recipe, Rating, Comment, db } from "./model.js";
 import userData from "../Data/userData.json" assert { type: "json" };
 import recipeData from "../Data/recipeData.json" assert { type: "json" };
+import commentData from "../Data/commentData.json" assert { type: "json"};
 
 //waits for the db to be synced before seeding
 const seedDatabase = async () => {
@@ -108,11 +109,16 @@ const usersInDb = await Promise.all(
   })
 );
 
-// need to change this to a finnd or create recipe based on username
+// need to change this to a find or create recipe based on username
 
 const recipesInDb = await Promise.all(
   recipeData.map((recipe) => {
-    const { userId, title, steps, ingredients, images } = recipe;
+    const { 
+      userId, 
+      title, 
+      steps, 
+      ingredients, 
+      images } = recipe;
 
     const newRecipe = Recipe.create({
       userId,
@@ -124,6 +130,28 @@ const recipesInDb = await Promise.all(
 
     // associate recipes with users
     return newRecipe;
+  })
+);
+
+const commentsInDb = await Promise.all(
+  commentData.map((recipe) => {
+    const { 
+      userId,
+      recipeId,
+      commentId, 
+      userName, 
+      message } = recipe;
+
+    const newComment = Comment.create({
+      userId,
+      recipeId,
+      commentId,
+      userName,
+      message,
+    });
+
+    // associate recipes with users
+    return newComment;
   })
 );
 
