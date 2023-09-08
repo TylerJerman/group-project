@@ -2,6 +2,7 @@ import express, { text } from 'express';
 import morgan from 'morgan';
 import ViteExpress from 'vite-express';
 import bcrypt from "bcrypt"
+import session from "express-session"
 import { User, Recipe, Comment, Rating } from './src/Backend/model.js';
 
 const app = express()
@@ -12,6 +13,7 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}))
 app.use(express.static('public'))
 app.use(express.json())
+app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false }));
 
 ViteExpress.config({printViteDevServerHost: true})
 
@@ -67,7 +69,8 @@ app.post('/api/logIn', async (req, res) =>
             {
                 if (await User.findOne({where: {email: email, password: hash}}))
                 {
-                    res.json({message: "user logged in", id: customer.userId, firstName: customer.firstName, lastName: customer.lastName})
+                    req.session.userId = customer.userId
+                    res.json({message: "user logged in", id: customer.userId})
                 }
             }
             else
@@ -79,6 +82,18 @@ app.post('/api/logIn', async (req, res) =>
     }
 })
 
+// post new recipe
+app.post('/api/new-recipe', async (req, res) => {
+    const { name, title, steps, ingredients, image } = req.body
+    const { userId } = req.session
+
+    const newRecipe = await Recipe.create({userId, name, title, steps, ingredients, image})
+
+    res.json(newRecipe)
+})
+
+
+// get recipes
 app.get('/api/recipes', async (req, res) => {
     let timeline = await Recipe.findAll()
 
@@ -93,8 +108,8 @@ app.get('/api/recipes/:id', async (req, res) => {
     //   const recipe = await Recipe.findOne({ where: { recipeId: id }, include: [Rating, Comment]});
 
     const recipe = await Recipe.findByPk(id)
-      
-      res.json(recipe);
+      const comments = await Comment.findAll({where: { recipeId: id}});
+      res.json({recipe, comments});
 
     } catch (error) {
 
@@ -103,6 +118,29 @@ app.get('/api/recipes/:id', async (req, res) => {
       res.status(500).json({ message: 'Recipe has not been gathered' });
     }
   });
+
+  // delete recipe
+  app.post('/api/delete-recipe/recipes/:id', async (req, res) => {
+    const { id } = req.params
+    await Recipe.destroy({
+        where: {
+            recipeId: id
+        }
+    })
+
+    res.json(`Recipe ${id} has been deleted`)
+  })
+
+
+
+
+
+
+
+
+
+
+
 
   //ratings
 app.post('/api/ratings', async (req, res) => {
@@ -174,21 +212,20 @@ app.post('/api/downVote', async (req, res) =>
 
 
   //comments
-// app.get('/api/comments/:id', async (req, res) => {
-//     try {
-//       const { id } = req.params;
+app.get('/api/comments/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
 
-//       const recipe = await Comment.findOne({ where: { Id: id }});
-      
-//       res.json(recipe);
+      const recipe = await Comment.findByPk({id});
+      res.json(recipe);
 
-//     } catch (error) {
+    } catch (error) {
 
-//       console.error(error);
+      console.error(error);
 
-//       res.status(500).json({ message: 'Comment has not been gathered' });
-//     }
-//   });
+      res.status(500).json({ message: 'Comment has not been gathered' });
+    }
+  });
 
 // end routes
 

@@ -1,8 +1,8 @@
-import axios from 'axios';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import Comments from './Comments.jsx';
 
 
 export default function RecipePage() {
@@ -49,9 +49,8 @@ export default function RecipePage() {
     setDownVoted('true')
   }
 
-  const {
-    recipes: { title, images, steps, ingredients }, 
-    } = useLoaderData()
+  const {recipe, comments} = useLoaderData();
+  const {recipeId, title, images, steps, ingredients} = recipe
     
   
     if (ratingMessage)
@@ -79,6 +78,7 @@ export default function RecipePage() {
          <img src={images} />
          <p>{steps}</p>
          <p>{ingredients}</p>
+         <Comments comments={comments} recipeId={recipeId} />
        </div>
      );
     }
@@ -103,8 +103,8 @@ export default function RecipePage() {
           <img src={images} />
           <p>{steps}</p>
           <p>{ingredients}</p>
+          <Comments comments={comments} recipeId={recipeId} />
         </div>
       );
     }
 }
- 

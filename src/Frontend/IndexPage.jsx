@@ -1,6 +1,9 @@
-import { Link, useLoaderData } from 'react-router-dom';
-import axios from 'axios';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import RecipeForm from './newRecipeForm';
+import axios from 'axios';
+
 
 
 export default function Timeline() {
@@ -55,6 +58,8 @@ export default function Timeline() {
       <>
         <h1>recipe timeline data</h1>
         <ul>{recipeListItems}</ul>
+
+        <Link to='/newrecipe'>new recipe</Link>
       </>
     );
   }
