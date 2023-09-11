@@ -14,7 +14,7 @@ export default function Timeline() {
 
     const dispatch = useDispatch()
 
-    const getRating = async (title) =>
+    const getRating = async (title, recipeId) =>
     {
       const info = {title: title}
 
@@ -48,11 +48,13 @@ export default function Timeline() {
       }
 
       dispatch({'type': 'SET_RATING', 'payload': counter})
+
+      dispatch({'type': 'SET_RECIPE_ID', 'payload': recipeId})
     }
 
     const recipeListItems = recipes.map(({ recipeId, title, image }) => (
         <li key={recipeId}>
-          <Link onClick={() => getRating(title)} to={`/recipes/${recipeId}`}>{title}</Link>
+          <Link onClick={() => getRating(title, recipeId)} to={`/recipes/${recipeId}`}>{title}</Link>
         </li>
       ));
     return (

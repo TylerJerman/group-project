@@ -24,6 +24,9 @@ const reducer = (state = initialState, action) =>
         case 'SET_EMAIL':
             let emailState = { ...state, email: action.payload }
             return emailState
+        case 'SET_RECIPE_ID':
+            let recipeIdState = { ...state, recipeId: action.payload }
+            return recipeIdState
         // add new cases below
         default:
             return state
