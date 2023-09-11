@@ -3,9 +3,9 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Comments from './Comments.jsx';
-import DeleteBtn from './RecipeFolder/deleteRecipeBtn.jsx';
+import DeleteBtn from './Components/deleteRecipeBtn.jsx';
+import EditForm from './EditRecipe.jsx';
 import axios from 'axios';
-
 
 export default function RecipePage() {
 
@@ -64,6 +64,15 @@ export default function RecipePage() {
     
   };
 
+  const handleEdit = async (event, formData) => {
+    event.preventDefault();
+
+    const res = await axios.post(`/api/edit-recipe/recipes/${recipeId}`, formData);
+
+    navigate('/')
+
+  }
+
   
     if (ratingMessage)
     {
@@ -118,6 +127,7 @@ export default function RecipePage() {
           <p>{ingredients}</p>
           <Comments comments={comments} recipeId={recipeId} />
           <DeleteBtn onDelete={handleDelete} />
+          <EditForm onEdit={handleEdit} />
         </div>
       );
     }
