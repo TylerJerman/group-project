@@ -1,11 +1,13 @@
 import React from 'react';
 import AddComment from './commentsFolder/AddComment.jsx'
+import { Link } from 'react-router-dom';
 
 export default function Comments({comments, recipeId}) {
 
-  const commentSection = comments.map(({ commentId, userName, message }) => (
+  const commentSection = comments.map(({ commentId, userId, userName, message }) => (
     <div key={commentId}>
-    <p>{userName}: {message}</p>
+       
+    <p><Link to={`/users/${userId}`}>{userName}</Link>: {message}</p>
   </div>
   ));
 
