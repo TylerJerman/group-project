@@ -82,6 +82,31 @@ app.post('/api/logIn', async (req, res) =>
     }
 })
 
+//update account info route
+app.post('/api/updateAccount', async (req, res) =>
+{
+    const {email, password, firstName, lastName, newEmail} = req.body
+
+    console.log(email)
+
+    let user = await User.findOne({ where: {email: email}})
+
+    bcrypt.genSalt(10, (err, salt) => 
+    {
+        bcrypt.hash(password, salt, async function(err, hash) 
+        {
+            user.email = newEmail
+            user.password = hash
+            user.firstName = firstName
+            user.lastName = lastName
+
+            await user.save()
+
+            res.json({ message: 'success' })
+        });
+    })
+})
+
 // post new recipe
 app.post('/api/new-recipe', async (req, res) => {
     const { name, title, steps, ingredients, image } = req.body
