@@ -3,7 +3,7 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Comments from './Comments.jsx';
-import DeleteBtn from './Components/deleteRecipeBtn.jsx';
+import DeleteBtn from './RecipeFolder/deleteRecipeBtn.jsx';
 import EditForm from './EditRecipe.jsx';
 import axios from 'axios';
 
