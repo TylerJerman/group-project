@@ -243,13 +243,12 @@ app.post('/api/downVote', async (req, res) =>
 })
 
 
-
-  //comments
+  //get comments
 app.get('/api/comments/:id', async (req, res) => {
     try {
       const { id } = req.params;
 
-      const findComment = await Comment.findByPk({id});
+      const findComment = await Comment.findAll({ where: {recipeId: id}})
       res.json(findComment);
 
     } catch (error) {
@@ -259,44 +258,29 @@ app.get('/api/comments/:id', async (req, res) => {
       res.status(500).json({ message: 'Comments have not been gathered' });
     }
   });
+//post a new comment 
+app.post('/api/newComment', async (req, res) => {
+    const { userName, message, recipeId } = req.body
 
-  app.post('/api/comments/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
+    console.log("yeah")
 
-        const createComment = await Comment.create({id});
-        res.json(createComment);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Comment has not been created'})
-    }
-  });
+    const newComment = await Comment.create({ recipeId, userName, message })
 
-//   app.post('/api/delete-comment/comments/:id', async (req, res) => {
-//       const { id } = req.params
-//       if (!id) {
-//           return res.status(400).json({ message: 'Missing commentId' });
-//         } try {
-//             await Comment.destroy({ where: { commentId: id }});
-//             res.json({ success: true });
-//         } catch (error) {
-//             console.error("Error deleting comment", error);
-//             res.status(500).json({ error: 'Failed to delete the comment' })
+    console.log("hit")
 
-//   app.delete('/api/cart/clear/:userId', async (req, res) => {
-//     const { userId } = req.params;
-//     if (!userId) {
-//       return res.status(400).json({ error: 'Missing userId.' });
-//     }
-//     try {
-//       await Cart.destroy({ where: { user_Id: userId } });
-//       res.json({ success: true });
-//     } catch (error) {
-//       console.error("Error clearing cart:", error);
-//       res.status(500).json({ error: 'Failed to clear cart.' });
-//     }
-//   });
+    res.json(newComment)
+});
 
+app.post('/api/deleteComment', async (req, res) => {
+
+    const {commentId} = req.body
+
+    const comment = await Comment.findOne({ where: { commentId: commentId}})
+
+    await comment.destroy()
+
+    res.json({ message: 'success'})
+})
 
 app.post('/api/deleteAccount', async (req, res) =>
 {

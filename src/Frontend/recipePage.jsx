@@ -7,7 +7,6 @@ import DeleteBtn from './Components/deleteRecipeBtn.jsx';
 import EditForm from './EditRecipe.jsx';
 import axios from 'axios';
 
-
 export default function RecipePage() {
 
   const navigate = useNavigate()
