@@ -1,21 +1,21 @@
 import express, { text } from 'express';
+import session from "express-session"
 import morgan from 'morgan';
 import ViteExpress from 'vite-express';
 import bcrypt from "bcrypt"
-import session from "express-session"
 import { User, Recipe, Comment, Rating } from './src/Backend/model.js';
 
 const app = express()
 
 const port = 5173
+ViteExpress.config({printViteDevServerHost: true})
 
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}))
 app.use(express.static('public'))
 app.use(express.json())
-app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false }));
+app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false}));
 
-ViteExpress.config({printViteDevServerHost: true})
 
 
 
@@ -70,7 +70,9 @@ app.post('/api/logIn', async (req, res) =>
                 if (await User.findOne({where: {email: email, password: hash}}))
                 {
                     req.session.userId = customer.userId
+                    
                     res.json({message: "user logged in", id: customer.userId, firstName: customer.firstName, lastName: customer.lastName})
+                    
                 }
             }
             else

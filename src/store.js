@@ -1,5 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
-
+import { applyMiddleware, combineReducers, configureStore } from "@reduxjs/toolkit";
+import {persistStore, persistReducer} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+// import rootReducer from "../reducers/reducers";
 
 let initialState = {message: ''}
 
@@ -28,10 +30,21 @@ const reducer = (state = initialState, action) =>
     }
 }
 
-const store = configureStore(
-    {
-        reducer: reducer
-    }
-)
+const persistConfig = {
+    key: 'root',
+    storage,
+  }
+
+// const store = configureStore(
+//     {
+//         reducer: reducer
+//     }
+// )
+
+const persistedReducer = persistReducer(persistConfig,reducer )
+
+export const store = configureStore({reducer: persistedReducer})
+
+export const persistor = persistStore(store)
 
 export default store
