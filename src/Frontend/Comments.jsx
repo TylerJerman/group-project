@@ -1,5 +1,6 @@
 import React from 'react';
-import AddComment from './commentsFolder/addComment';
+import AddComment from './commentsFolder/AddComment.jsx'
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useState } from 'react';
@@ -42,6 +43,12 @@ export default function Comments({comments, commentId}) {
 
 });
 
+  const commentSection = comments.map(({ commentId, userId, userName, message }) => (
+    <div key={commentId}>
+       
+    <p><Link to={`/users/${userId}`}>{userName}</Link>: {message}</p>
+  </div>
+  ));
 
   return (
     <>

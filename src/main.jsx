@@ -22,6 +22,7 @@ import RecipePage from './Frontend/recipePage.jsx';
 import RecipeForm from './Frontend/newRecipeForm.jsx';
 import NewRecipePage from './Frontend/newRecipePage.jsx';
 import Comments from './Frontend/Comments.jsx';
+import UserProfile from './Frontend/UserProfile.jsx';
 
 
 const router = createBrowserRouter(
@@ -56,6 +57,18 @@ const router = createBrowserRouter(
             );
             console.log(res.data)
             return { recipe: res.data.recipe, comments: res.data.comments };
+          }}
+        />
+
+<Route
+          path="users/:userId"
+          element={<UserProfile />}
+          loader={async ({ params }) => {
+            const res = await axios.get(
+              `/api/users/${params.userId}`
+            );
+            console.log(res.data)
+            return { user: res.data };
           }}
         />
 

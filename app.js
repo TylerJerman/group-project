@@ -119,6 +119,19 @@ app.post('/api/new-recipe', async (req, res) => {
     res.json(newRecipe)
 })
 
+// get users
+app.get('/api/users', async (req, res) => {
+    let users = await User.findAll()
+    res.json(users)
+})
+
+// get user profile
+app.get('/api/users/:id', async (req, res) => {
+    const { id } = req.params
+
+    const user = await User.findByPk(id)
+    res.json(user)
+})
 
 // get recipes
 app.get('/api/recipes', async (req, res) => {
