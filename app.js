@@ -1,21 +1,21 @@
 import express, { text } from 'express';
+import session from "express-session"
 import morgan from 'morgan';
 import ViteExpress from 'vite-express';
 import bcrypt from "bcrypt"
-import session from "express-session"
 import { User, Recipe, Comment, Rating } from './src/Backend/model.js';
 
 const app = express()
 
 const port = 5173
+ViteExpress.config({printViteDevServerHost: true})
 
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}))
 app.use(express.static('public'))
 app.use(express.json())
-app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false }));
+app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false}));
 
-ViteExpress.config({printViteDevServerHost: true})
 
 
 
@@ -70,7 +70,9 @@ app.post('/api/logIn', async (req, res) =>
                 if (await User.findOne({where: {email: email, password: hash}}))
                 {
                     req.session.userId = customer.userId
+                    
                     res.json({message: "user logged in", id: customer.userId, firstName: customer.firstName, lastName: customer.lastName})
+                    
                 }
             }
             else
@@ -173,17 +175,6 @@ app.get('/api/recipes/:id', async (req, res) => {
     res.json(recipe)
   })
 
-
-
-
-
-
-
-
-
-
-
-
   //ratings
 app.post('/api/ratings', async (req, res) => {
     
@@ -258,16 +249,53 @@ app.get('/api/comments/:id', async (req, res) => {
     try {
       const { id } = req.params;
 
-      const recipe = await Comment.findByPk({id});
-      res.json(recipe);
+      const findComment = await Comment.findByPk({id});
+      res.json(findComment);
 
     } catch (error) {
 
       console.error(error);
 
-      res.status(500).json({ message: 'Comment has not been gathered' });
+      res.status(500).json({ message: 'Comments have not been gathered' });
     }
   });
+
+  app.post('/api/comments/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const createComment = await Comment.create({id});
+        res.json(createComment);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Comment has not been created'})
+    }
+  });
+
+//   app.post('/api/delete-comment/comments/:id', async (req, res) => {
+//       const { id } = req.params
+//       if (!id) {
+//           return res.status(400).json({ message: 'Missing commentId' });
+//         } try {
+//             await Comment.destroy({ where: { commentId: id }});
+//             res.json({ success: true });
+//         } catch (error) {
+//             console.error("Error deleting comment", error);
+//             res.status(500).json({ error: 'Failed to delete the comment' })
+
+//   app.delete('/api/cart/clear/:userId', async (req, res) => {
+//     const { userId } = req.params;
+//     if (!userId) {
+//       return res.status(400).json({ error: 'Missing userId.' });
+//     }
+//     try {
+//       await Cart.destroy({ where: { user_Id: userId } });
+//       res.json({ success: true });
+//     } catch (error) {
+//       console.error("Error clearing cart:", error);
+//       res.status(500).json({ error: 'Failed to clear cart.' });
+//     }
+//   });
 
 
 app.post('/api/deleteAccount', async (req, res) =>

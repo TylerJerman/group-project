@@ -8,13 +8,15 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from './store.js';
 import Home from './Frontend/Home.jsx';
 import IndexPage from './Frontend/IndexPage.jsx';
 import Timeline from './Frontend/Timeline.jsx';
 import SignUp from './Frontend/SignUp.jsx';
 import LogIn from './Frontend/LogIn.jsx';
 import axios from 'axios';
-import store from './store.js'
+// import store from './store.js'
 import { Provider } from 'react-redux'
 import RecipePage from './Frontend/recipePage.jsx';
 import RecipeForm from './Frontend/newRecipeForm.jsx';
@@ -72,7 +74,10 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
     <RouterProvider router={router} />
+    </PersistGate>
+
     </Provider>
   </React.StrictMode>,
 )
