@@ -43,13 +43,6 @@ export default function Comments({comments, commentId}) {
 
 });
 
-  const commentSection = comments.map(({ commentId, userId, userName, message }) => (
-    <div key={commentId}>
-       
-    <p><Link to={`/users/${userId}`}>{userName}</Link>: {message}</p>
-  </div>
-  ));
-
   return (
     <>
     { userName1 &&

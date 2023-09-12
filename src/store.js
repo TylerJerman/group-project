@@ -1,6 +1,7 @@
 import { applyMiddleware, combineReducers, configureStore } from "@reduxjs/toolkit";
 import {persistStore, persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
 // import rootReducer from "../reducers/reducers";
 
 let initialState = {message: ''}
@@ -27,6 +28,12 @@ const reducer = (state = initialState, action) =>
         case 'SET_RECIPE_ID':
             let recipeIdState = { ...state, recipeId: action.payload }
             return recipeIdState
+        case 'SET_USER_ID':
+            let userIdState = { ...state, userId: action.payload }
+            return userIdState
+        case 'IS_USERS_RECIPE':
+            let isUsersRecipeState = { ...state, isUsersRecipe: action.payload }
+            return isUsersRecipeState
         // add new cases below
         default:
             return state
@@ -46,7 +53,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig,reducer )
 
-export const store = configureStore({reducer: persistedReducer})
+export const store = configureStore({reducer: persistedReducer, middleware: getDefaultMiddleware => getDefaultMiddleware({serializableCheck: false})})
 
 export const persistor = persistStore(store)
 

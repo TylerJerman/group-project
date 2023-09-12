@@ -8,13 +8,15 @@ import axios from 'axios';
 
 export default function Timeline() {
     const { recipes } = useLoaderData()
+    const {recipeId, title, images, steps, ingredients, userId} = recipes
 
     const userName = useSelector((state) => state.userName)
-    console.log(userName)
+
+    const thisUserId = useSelector((state) => state.userId)
 
     const dispatch = useDispatch()
 
-    const getRating = async (title, recipeId) =>
+    const getRating = async (title, recipeId, userId) =>
     {
       const info = {title: title}
 
@@ -50,11 +52,20 @@ export default function Timeline() {
       dispatch({'type': 'SET_RATING', 'payload': counter})
 
       dispatch({'type': 'SET_RECIPE_ID', 'payload': recipeId})
+
+      if (thisUserId === userId)
+      {
+        dispatch({'type': 'IS_USERS_RECIPE', 'payload': 'true'})
+      }
+      else
+      {
+        dispatch({'type': 'IS_USERS_RECIPE', 'payload': ''})
+      }
     }
 
-    const recipeListItems = recipes.map(({ recipeId, title, image }) => (
+    const recipeListItems = recipes.map(({ recipeId, title, image, userId }) => (
         <li key={recipeId}>
-          <Link onClick={() => getRating(title, recipeId)} to={`/recipes/${recipeId}`}>{title}</Link>
+          <Link onClick={() => getRating(title, recipeId, userId)} to={`/recipes/${recipeId}`}>{title}</Link>
         </li>
       ));
     return (

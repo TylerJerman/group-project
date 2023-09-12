@@ -53,6 +53,7 @@ export default function LogIn()
                 let userName = (data.firstName) + (data.lastName)
                 dispatch({'type': 'SET_USERNAME', 'payload': userName})
                 dispatch({'type': 'SET_EMAIL', 'payload': email})
+                dispatch({'type': 'SET_USER_ID', 'payload': data.id})
                 navigate('/')
             }
         }
