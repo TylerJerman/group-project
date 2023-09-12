@@ -109,10 +109,10 @@ export default function LogIn()
             <div>
                 <h1>Log In</h1>
                 <div>
-                    <input type="text" placeholder="email" onChange={(event) => {setEmail(event.target.value)}}/>
+                    <input type="email" placeholder="email" onChange={(event) => {setEmail(event.target.value)}}/>
                 </div>
                 <div>
-                    <input type="text" placeholder="password" onChange={(event) => {setPassword(event.target.value)}}/>
+                    <input type="password" placeholder="password" onChange={(event) => {setPassword(event.target.value)}}/>
                 </div>
                 <input type="submit" onClick={ClickLogIn}/>
                 { err.length > 0 &&

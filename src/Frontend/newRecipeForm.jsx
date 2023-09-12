@@ -25,7 +25,7 @@ export default function RecipeForm({ onNewRecipe }) {
         });
       }}
     >
-      <div>
+      
         <label htmlFor="title">recipe title: </label>
         <input
           name="title"
@@ -35,17 +35,19 @@ export default function RecipeForm({ onNewRecipe }) {
           onChange={(e) => setTitleValue(e.target.value)}
         />
         <label htmlFor="steps"> steps: </label>
-        <input
+        <textarea
+          className='steps'
           name="steps"
           id="steps"
           type="text"
           required
           onChange={(e) => setStepsValue(e.target.value)}
         />
-      </div>
-      <div>
+      
+      
         <label htmlFor="ingredients"> ingredients: </label>
-        <input
+        <textarea
+          className='steps'
           name="ingredients"
           id="ingredients"
           type="text"
@@ -60,7 +62,7 @@ export default function RecipeForm({ onNewRecipe }) {
           required
           onChange={(e) => setImageValue(e.target.value)}
         />
-      </div>
+      
       <button type="submit">create recipe</button>
     </form>
   );

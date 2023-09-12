@@ -114,7 +114,8 @@ app.post('/api/new-recipe', async (req, res) => {
     const { name, title, steps, ingredients, images } = req.body
     const { userId } = req.session
 
-    const newRecipe = await Recipe.create({userId, name, title, steps, ingredients, images})
+    const newRecipe = await Recipe.create({userId, name, title, steps, ingredients, images: image})
+    console.log(req.body)
 
     res.json(newRecipe)
 })
