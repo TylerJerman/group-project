@@ -8,7 +8,8 @@ import EditForm from './EditRecipe.jsx';
 import axios from 'axios';
 
 export default function RecipePage() {
-
+  
+  const {recipe, comments} = useLoaderData();
   const navigate = useNavigate()
 
   const userName = useSelector((state) => state.userName)
@@ -57,7 +58,6 @@ export default function RecipePage() {
     setDownVoted('true')
   }
 
-  const {recipe, comments} = useLoaderData();
   const {recipeId, title, images, steps, ingredients, userId} = recipe
 
   const handleDelete = async (e) => {
@@ -105,7 +105,8 @@ export default function RecipePage() {
              </div>
            }
          </div>
-         <img src={images} />
+         <img alt={images} src={images} />
+         {console.log(images)}
          <p>{steps}</p>
          <p>{ingredients}</p>
          <Comments comments={comments} recipeId={recipeId} />
