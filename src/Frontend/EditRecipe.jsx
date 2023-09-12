@@ -26,7 +26,7 @@ export default function EditForm({ onEdit }) {
         name="title"
         id="title"
         type="text"
-        required
+        
         onChange={(e) => setTitleValue(e.target.value)}
       />
       <label htmlFor="steps">steps:</label>
@@ -34,7 +34,7 @@ export default function EditForm({ onEdit }) {
         name="steps"
         id="steps"
         type="text"
-        required
+        
         onChange={(e) => setStepsValue(e.target.value)}
       />
       <label htmlFor="ingredients">ingredients:</label>
@@ -42,7 +42,7 @@ export default function EditForm({ onEdit }) {
         name="ingredients"
         id="ingredients"
         type="text"
-        required
+        
         onChange={(e) => setIngredientsValue(e.target.value)}
       />
       <label htmlFor="images">images:</label>
@@ -50,7 +50,7 @@ export default function EditForm({ onEdit }) {
         name="images"
         id="images"
         type="text"
-        required
+        
         onChange={(e) => setImagesValue(e.target.value)}
       />
       <button type="submit">edit recipe</button>

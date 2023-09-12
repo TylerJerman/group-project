@@ -11,6 +11,7 @@ export default function Comments({comments, commentId}) {
   const navigate = useNavigate()
 
   const recipeId = useSelector((state) => state.recipeId)
+  const userId = useSelector((state) => state.userId) 
 
   const deleteComment = async (commentId) => {
     const info = {commentId: commentId}

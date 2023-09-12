@@ -63,7 +63,7 @@ export default function Timeline() {
       }
     }
 
-    const recipeListItems = recipes.map(({ recipeId, title, image, userId }) => (
+    const recipeListItems = recipes.map(({ recipeId, title, images, userId }) => (
         <li key={recipeId}>
           <Link onClick={() => getRating(title, recipeId, userId)} to={`/recipes/${recipeId}`}>{title}</Link>
         </li>
@@ -71,7 +71,7 @@ export default function Timeline() {
     return (
       <>
         <h1>recipe timeline data</h1>
-        <div>{recipeListItems}</div>
+        <ul>{recipeListItems}</ul>
 
         { userName &&
           <Link to='/newrecipe'>new recipe</Link>
