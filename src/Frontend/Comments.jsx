@@ -1,18 +1,18 @@
 import React from 'react';
-import AddComment from './commentsFolder/AddComment.jsx'
-import { Link } from 'react-router-dom';
+import AddComment from './commentsFolder/addComment';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Comments({comments, commentId}) {
 
   const userName1 = useSelector((state) => state.userName)
   const navigate = useNavigate()
 
+  const recipeId = useSelector((state) => state.recipeId)
 
-  const deleteComment = async (commentId, recipeId) => {
+  const deleteComment = async (commentId) => {
     const info = {commentId: commentId}
 
     const {data} = await axios.post('/api/deleteComment', info)
@@ -20,12 +20,12 @@ export default function Comments({comments, commentId}) {
     navigate(`/recipes/${recipeId}`)
   }
 
-  const commentSection = comments.map(({ commentId, userName, message, recipeId }) => {
+  const commentSection = comments.map(({ userId, commentId, userName, message, recipeId }) => {
 
     if (userName === userName1) {
       return (
         <div key={commentId}>
-          <p>{userName}: {message}</p>
+            <p><Link to={`/users/${userId}`}>{userName}</Link>: {message}</p>
           <div>
             <button onClick={() => deleteComment(commentId, recipeId)}>Delete</button>
           </div>
@@ -35,20 +35,14 @@ export default function Comments({comments, commentId}) {
     else {
       return (
         <div key={commentId}>
-          <p>{userName}: {message}</p>
+          <p><Link to={`/users/${userId}`}>{userName}</Link>: {message}</p>
         </div>
       )
     }
+  
+  
+  });
 
-
-});
-
-  // const commentSection = comments.map(({ commentId, userId, userName, message }) => (
-  //   <div key={commentId}>
-       
-  //   <p><Link to={`/users/${userId}`}>{userName}</Link>: {message}</p>
-  // </div>
-  // ));
 
   return (
     <>
