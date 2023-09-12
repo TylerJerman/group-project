@@ -21,7 +21,7 @@ export default function RecipeForm({ onNewRecipe }) {
           title: titleValue,
           steps: stepsValue,
           ingredients: ingredientsValue,
-          image: imageValue
+          images: imageValue
         });
       }}
     >

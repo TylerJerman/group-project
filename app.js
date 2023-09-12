@@ -111,10 +111,10 @@ app.post('/api/updateAccount', async (req, res) =>
 
 // post new recipe
 app.post('/api/new-recipe', async (req, res) => {
-    const { name, title, steps, ingredients, image } = req.body
+    const { name, title, steps, ingredients, images } = req.body
     const { userId } = req.session
 
-    const newRecipe = await Recipe.create({userId, name, title, steps, ingredients, image})
+    const newRecipe = await Recipe.create({userId, name, title, steps, ingredients, images})
 
     res.json(newRecipe)
 })
