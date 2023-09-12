@@ -43,7 +43,6 @@ export default function Comments({comments, commentId}) {
   
   });
 
-
   return (
     <>
     { userName1 &&

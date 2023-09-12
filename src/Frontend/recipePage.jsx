@@ -18,7 +18,11 @@ export default function RecipePage() {
   const rating = useSelector((state) => state.rating)
   const ratingMessage = useSelector((state) => state.ratingMessage)
 
+  const isUsersRecipe = useSelector((state) => state.isUsersRecipe)
+  console.log(isUsersRecipe)
+
   const [downVoted, setDownVoted] = useState('')
+  const [showEdit, setShowEdit] = useState('')
 
 
   const clickUpVote = async () =>
@@ -54,7 +58,7 @@ export default function RecipePage() {
   }
 
   const {recipe, comments} = useLoaderData();
-  const {recipeId, title, images, steps, ingredients} = recipe
+  const {recipeId, title, images, steps, ingredients, userId} = recipe
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -71,6 +75,11 @@ export default function RecipePage() {
 
     navigate('/')
 
+  }
+
+  const showEditForm = () =>
+  {
+    setShowEdit('true')
   }
 
   
@@ -100,7 +109,15 @@ export default function RecipePage() {
          <p>{steps}</p>
          <p>{ingredients}</p>
          <Comments comments={comments} recipeId={recipeId} />
-         <DeleteBtn onDelete={handleDelete} />
+         { isUsersRecipe.length > 1 &&
+          <>
+            <DeleteBtn onDelete={handleDelete} />
+            <button onClick={showEditForm}>Edit Recipe</button>
+            { showEdit.length > 1 &&
+              <EditForm onEdit={handleEdit}/>
+            }
+          </>
+         }
        </div>
      );
     }
@@ -126,8 +143,15 @@ export default function RecipePage() {
           <p>{steps}</p>
           <p>{ingredients}</p>
           <Comments comments={comments} recipeId={recipeId} />
-          <DeleteBtn onDelete={handleDelete} />
-          <EditForm onEdit={handleEdit} />
+          { isUsersRecipe.length > 1 &&
+          <>
+            <DeleteBtn onDelete={handleDelete} />
+            <button onClick={showEditForm}>Edit Recipe</button>
+            { showEdit.length > 1 &&
+              <EditForm onEdit={handleEdit}/>
+            }
+          </>
+         }
         </div>
       );
     }
