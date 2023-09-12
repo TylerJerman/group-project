@@ -8,12 +8,13 @@ export default function AddComment() {
 
   const userName = useSelector((state) => state.userName)
   const recipeId = useSelector((state) => state.recipeId)
+  const userId = useSelector((state) => state.userId)
 
   const navigate = useNavigate()
 
   const addComment = async () =>
   {
-    const info = {message: comment, userName: userName, recipeId: recipeId}
+    const info = {message: comment, userName: userName, recipeId: recipeId, userId: userId}
 
     console.log(recipeId)
 

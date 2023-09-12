@@ -2,36 +2,43 @@
   {
     "recipeId": "1",
     "userName": "JaneSmith",
-    "message": "This actually looks very good."
+    "message": "This actually looks very good.",
+    "userId": "2"
   },
   {
     "recipeId": "1",
     "userName": "JohnDoe",
-    "message": "Good recipe boss."
+    "message": "Good recipe boss.",
+    "userId": "1"
   },
   {
     "recipeId": "1",
     "userName": "JaneSmith",
-    "message": "I'm gonna make this for my kids!"
+    "message": "I'm gonna make this for my kids!",
+    "userId": "2"
   },
   {
     "recipeId": "1",
     "userName": "MikeJohnson",
-    "message": "Yayuh i luv toast"
+    "message": "Yayuh i luv toast",
+    "userId": "3"
   },
   {
     "recipeId": "2",
     "userName": "TreyCorrea",
-    "message": "Making this rn"
+    "message": "Making this rn",
+    "userId": "4"
   },
   {
     "recipeId": "2",
     "userName": "MikeJohnson",
-    "message": "Yayuh this looks good"
+    "message": "Yayuh this looks good",
+    "userId": "3"
   },
   {
     "recipeId": "2",
     "userName": "JohnDoe",
-    "message": "Bad recipe boss."
+    "message": "Bad recipe boss.",
+    "userId": "1"
   }
 ]

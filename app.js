@@ -273,11 +273,11 @@ app.get('/api/comments/:id', async (req, res) => {
   });
 //post a new comment 
 app.post('/api/newComment', async (req, res) => {
-    const { userName, message, recipeId } = req.body
+    const { userName, message, recipeId, userId } = req.body
 
     console.log("yeah")
 
-    const newComment = await Comment.create({ recipeId, userName, message })
+    const newComment = await Comment.create({ recipeId, userName, message, userId })
 
     console.log("hit")
 
