@@ -28,25 +28,13 @@ import UserProfile from './Frontend/UserProfile.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     
-      <Route path="/" element={<App />} >
-        <Route index element={<IndexPage />}
-         loader={async () => {
-          const res = await axios.get(`/api/recipes`);
-          return { recipes: res.data };
-        }}
-        
-        />
-
-        {/** */}
-        {/* <Route
-          
-          path="recipes"
-          element={<Timeline />}
+        <Route path="/" element={<App />} >
+          <Route index element={<IndexPage />}
           loader={async () => {
             const res = await axios.get(`/api/recipes`);
             return { recipes: res.data };
           }}
-        /> */}
+        />
 
         <Route
           path="recipes/:recipeId"
@@ -60,7 +48,7 @@ const router = createBrowserRouter(
           }}
         />
 
-<Route
+        <Route
           path="users/:userId"
           element={<UserProfile />}
           loader={async ({ params }) => {
@@ -76,8 +64,6 @@ const router = createBrowserRouter(
         <Route path="login" element={<LogIn />} />
         <Route path="newrecipe" element={<NewRecipePage />} />
         
-
-
       </Route>
   )
 );

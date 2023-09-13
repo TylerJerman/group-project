@@ -97,13 +97,14 @@ await db.sync({ force: true });
 
 const usersInDb = await Promise.all(
   userData.map((user) => {
-    const { firstName, lastName, email, password } = user;
+    const { firstName, lastName, email, password, profilePic } = user;
 
     const newUser = User.create({
       firstName,
       lastName,
       email,
       password,
+      profilePic
     });
 
     return newUser;
