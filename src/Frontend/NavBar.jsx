@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { useSelector } from "react-redux"
+import Secret from "./secret"
 
 export default function NavBar()
 {
@@ -15,7 +16,7 @@ export default function NavBar()
                         <img className="navProfile" src={profilePic} alt="profile picture"/>
                     </li>
                 }
-                <li>
+                <li className="leftMostLi">
                     <NavLink to="/">Home</NavLink>
                 </li>
                 { userName && 
@@ -30,6 +31,9 @@ export default function NavBar()
                         </li>
                         <li>
                             <NavLink to="/signup">Sign up</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="secret" to='/secret'>here</NavLink>
                         </li>
                     </>
                 }

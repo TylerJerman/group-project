@@ -168,7 +168,7 @@ export default function LogIn()
                         </div>
                         <div>
                             <input type="text" placeholder="Email:" onChange={(event) => setNewEmail(event.target.value)}/>
-                            <input type="text" placeholder="Password:" onChange={(event) => setPassword(event.target.value)}/>
+                            <input type="password" placeholder="Password:" onChange={(event) => setPassword(event.target.value)}/>
                         </div>
                         <div>
                             <input type="text" placeholder="Profile Pic URL" onChange={(event) => setProfilePic(event.target.value)}/>
