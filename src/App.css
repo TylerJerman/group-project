@@ -3,8 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
  
 
 }
@@ -33,6 +33,7 @@ nav {
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 form {
@@ -47,6 +48,10 @@ input {
 
 button {
   margin: 5px;
+}
+
+textarea {
+  border-radius: 7px;
 }
 
 .steps {
