@@ -91,6 +91,8 @@ app.post('/api/updateAccount', async (req, res) =>
 
     let user = await User.findOne({ where: {email: email}})
 
+    Comment.update({ userName: (firstName + lastName)},{ where: { userId: userId }})
+
     bcrypt.genSalt(10, (err, salt) => 
     {
         bcrypt.hash(password, salt, async function(err, hash) 
