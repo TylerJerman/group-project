@@ -5,6 +5,7 @@ export default function NavBar()
 {
 
     const profilePic = useSelector((state) => state.profilePic)
+    const userName = useSelector((state) => state.userName)
     
     return (
         <nav>
@@ -17,12 +18,21 @@ export default function NavBar()
                 <li>
                     <NavLink to="/">Home</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/login">Log in</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/signup">Sign up</NavLink>
-                </li>
+                { userName && 
+                    <li>
+                        <NavLink to="/login">Log Out / Edit Account</NavLink>
+                    </li>
+                }
+                { !userName &&
+                    <>
+                        <li>
+                            <NavLink to="/login">Log in</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/signup">Sign up</NavLink>
+                        </li>
+                    </>
+                }
             </div>
         </nav> 
     )

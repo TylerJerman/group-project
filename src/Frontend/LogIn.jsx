@@ -28,7 +28,7 @@ export default function LogIn()
     const dispatch = useDispatch()
 
     const [editing, setEditing] = useState('')
-    const [profilePic, setProfilePic] = useState('')
+    const [profilePic, setProfilePic] = useState('https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg')
 
     const userId = useSelector((state) => state.userId)
 
@@ -82,6 +82,7 @@ export default function LogIn()
     const deleteAccount = async () =>
     {
         dispatch({'type': 'SET_USERNAME', 'payload': ''})
+        dispatch({'type': 'SET_PROFILE_PIC', 'payload': ''})
         const info = {email: reduxEmail}
         await axios.post('/api/deleteAccount', info)
     }
@@ -101,6 +102,7 @@ export default function LogIn()
     const updateAccount = async () =>
     {
         const user = {email: reduxEmail, password: password, firstName: firstName, lastName: lastName, newEmail: newEmail, profilePic: profilePic, userId: userId}
+
 
         await axios.post('/api/updateAccount', user)
 
