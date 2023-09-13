@@ -28,6 +28,9 @@ export default function LogIn()
     const dispatch = useDispatch()
 
     const [editing, setEditing] = useState('')
+    const [profilePic, setProfilePic] = useState('https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg')
+
+    const userId = useSelector((state) => state.userId)
 
     const ClickLogIn = async () =>
     {
@@ -54,6 +57,7 @@ export default function LogIn()
                 dispatch({'type': 'SET_USERNAME', 'payload': userName})
                 dispatch({'type': 'SET_EMAIL', 'payload': email})
                 dispatch({'type': 'SET_USER_ID', 'payload': data.id})
+                dispatch({'type': 'SET_PROFILE_PIC', 'payload': data.profilePic})
                 navigate('/')
             }
         }
@@ -78,6 +82,7 @@ export default function LogIn()
     const deleteAccount = async () =>
     {
         dispatch({'type': 'SET_USERNAME', 'payload': ''})
+        dispatch({'type': 'SET_PROFILE_PIC', 'payload': ''})
         const info = {email: reduxEmail}
         await axios.post('/api/deleteAccount', info)
     }
@@ -86,6 +91,7 @@ export default function LogIn()
     {
         dispatch({'type': 'SET_USERNAME', 'payload': ''})
         dispatch({'type': 'SET_EMAIL', 'payload': ''})
+        dispatch({'type': 'SET_PROFILE_PIC', 'payload': ''})
     }
 
     const editAccount = () =>
@@ -95,12 +101,15 @@ export default function LogIn()
 
     const updateAccount = async () =>
     {
-        const user = {email: reduxEmail, password: password, firstName: firstName, lastName: lastName, newEmail: newEmail}
+        const user = {email: reduxEmail, password: password, firstName: firstName, lastName: lastName, newEmail: newEmail, profilePic: profilePic, userId: userId}
+
 
         await axios.post('/api/updateAccount', user)
 
         setEditing('')
         dispatch({'type': 'SET_EMAIL', 'payload': newEmail})
+        dispatch({'type': 'SET_PROFILE_PIC', 'payload': profilePic})
+        dispatch({'type': 'SET_USERNAME', 'payload': (firstName + lastName)})
     }
 
     return (
@@ -162,7 +171,10 @@ export default function LogIn()
                         </div>
                         <div>
                             <input type="text" placeholder="Email:" onChange={(event) => setNewEmail(event.target.value)}/>
-                            <input type="text" placeholder="Password:" onChange={(event) => setPassword(event.target.value)}/>
+                            <input type="password" placeholder="Password:" onChange={(event) => setPassword(event.target.value)}/>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Profile Pic URL" onChange={(event) => setProfilePic(event.target.value)}/>
                         </div>
                         <input type="submit" onClick={updateAccount}/>
                     </>

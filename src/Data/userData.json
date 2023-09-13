@@ -3,24 +3,28 @@
       "firstName": "John",
       "lastName": "Doe",
       "email": "john@example.com",
-      "password": "password123"
+      "password": "password123",
+      "profilePic": "https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
     },
     {
       "firstName": "Jane",
       "lastName": "Smith",
       "email": "jane@example.com",
-      "password": "password456"
+      "password": "password456",
+      "profilePic": "https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
     },
     {
       "firstName": "Mike",
       "lastName": "Johnson",
       "email": "mike@example.com",
-      "password": "password789"
+      "password": "password789",
+      "profilePic": "https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
     },
     {
       "firstName": "Trey",
       "lastName": "Correa",
       "email": "trey@example.com",
-      "password": "123"
+      "password": "123",
+      "profilePic": "https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
     }
   ]
