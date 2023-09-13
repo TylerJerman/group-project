@@ -117,13 +117,14 @@ export default function LogIn()
         { !userName && 
             <div>
                 <h1>Log In</h1>
-                <div>
-                    <input type="email" placeholder="email" onChange={(event) => {setEmail(event.target.value)}}/>
+                <div className="input-container">
+                    <input  type="email" placeholder="email" onChange={(event) => {setEmail(event.target.value)}}/>
                 </div>
-                <div>
+                <div className="input-container">
+                    
                     <input type="password" placeholder="password" onChange={(event) => {setPassword(event.target.value)}}/>
                 </div>
-                <input type="submit" onClick={ClickLogIn}/>
+                <button type="submit" onClick={ClickLogIn}> log in!</button>
                 { err.length > 0 &&
                     <div>{errMsg}</div>
                 }
@@ -143,11 +144,13 @@ export default function LogIn()
                         { youSure.length < 1 &&
                             <>
                                 <div>
-                                    <button onClick={areYouSure}>Delete Account</button>
-                                    <button onClick={editAccount}>Edit Account</button>
+                                    <a onClick={areYouSure}>Delete Account</a>
                                 </div>
                                 <div>
-                                    <button onClick={logOut}>Log Out</button>
+                                   <a onClick={editAccount}>Edit Account</a>
+                                </div> 
+                                <div>
+                                    <a onClick={logOut}>Log Out</a>
                                 </div>
                             </>
                         }

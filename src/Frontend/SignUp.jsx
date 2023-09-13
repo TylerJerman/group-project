@@ -44,18 +44,21 @@ export default function SignUp()
     return (
         <div>
             <h1>Sign Up</h1>
-            <div>
+            <div  className="input-container">
                 <input type="email" placeholder="email" onChange={(event) => {setEmail(event.target.value)}} />
                 <input type="password" placeholder="password" onChange={(event) => {setPassword(event.target.value)}} />
             </div>
-            <div>
+            <div  className="input-container">
                 <input type="text" placeholder="First Name" onChange={(event) => {setFirstName(event.target.value)}} />
                 <input type="text" placeholder="Last Name" onChange={(event) => {setLastName(event.target.value)}} />
             </div>
-            <input type="submit" onClick={ClickSignUp}/>
+            <div>
+            <button type="submit" onClick={ClickSignUp}>sign up</button>
+            </div>
             { err.length > 0 &&
                 <div>{errMsg}</div>
             }
+            
             <div>
                 <Link to="/login">Log in</Link>
             </div>
