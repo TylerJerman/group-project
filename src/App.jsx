@@ -1,6 +1,7 @@
 
 import './App.css'
-import { NavLink, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import NavBar from './Frontend/NavBar';
 
 
 
@@ -9,56 +10,10 @@ function App() {
   return (
     <>
 
-      <nav>
-        <div>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          {/* <li>
-            <NavLink to="/recipes">timeline</NavLink>
-          </li> */}
-          <li>
-            <NavLink to="/login">Log in</NavLink>
-          </li>
-          <li>
-            <NavLink to="/signup">Sign up</NavLink>
-          </li>
-        </div>
-      </nav> 
-
-
-
-
-
-
-
-
-
-{/* 
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home/>}></Route>
-          <Route path='/signup' element={<SignUp/>}></Route>
-          <Route path='/login' element={<LogIn/>}></Route>
-          <Route path='/recipes' element={<Timeline/>}
-            loader={async () => {
-              const res = await axios.get("/api/recipes");
-              {
-                
-              }
-              return { recipes: res.data };
-            }}
-          
-          ></Route>
-        </Routes>
-      </BrowserRouter> */}
-
-
+      <NavBar/>
 
       <main>
-        <Outlet />
-       
-
+        <Outlet/>
       </main>
     
     </>

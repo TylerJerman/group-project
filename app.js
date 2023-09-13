@@ -39,7 +39,7 @@ app.post('/api/signup', async (req, res) =>
             }
             else
             {
-                let newCustomer = await User.create({email: email, password: hash, firstName: firstName, lastName: lastName})
+                let newCustomer = await User.create({email: email, password: hash, firstName: firstName, lastName: lastName, profilePic: 'https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'})
                 res.json({message: "account created"})
             }
         });
@@ -52,7 +52,7 @@ app.post('/api/logIn', async (req, res) =>
 {
     const {email, password} = req.body
 
-    let customer = await User.findOne({where: {email: email}, attributes: ['password', 'firstName', 'lastName', "userId"]})
+    let customer = await User.findOne({where: {email: email}, attributes: ['password', 'firstName', 'lastName', "userId", "profilePic"]})
 
     if (!customer)
     {
@@ -71,7 +71,7 @@ app.post('/api/logIn', async (req, res) =>
                 {
                     req.session.userId = customer.userId
                     
-                    res.json({message: "user logged in", id: customer.userId, firstName: customer.firstName, lastName: customer.lastName})
+                    res.json({message: "user logged in", id: customer.userId, firstName: customer.firstName, lastName: customer.lastName, profilePic: customer.profilePic})
                     
                 }
             }
@@ -87,9 +87,7 @@ app.post('/api/logIn', async (req, res) =>
 //update account info route
 app.post('/api/updateAccount', async (req, res) =>
 {
-    const {email, password, firstName, lastName, newEmail} = req.body
-
-    console.log(email)
+    const {email, password, firstName, lastName, newEmail, profilePic, userId} = req.body
 
     let user = await User.findOne({ where: {email: email}})
 
@@ -101,6 +99,7 @@ app.post('/api/updateAccount', async (req, res) =>
             user.password = hash
             user.firstName = firstName
             user.lastName = lastName
+            user.profilePic = profilePic
 
             await user.save()
 
@@ -111,7 +110,7 @@ app.post('/api/updateAccount', async (req, res) =>
 
 // post new recipe
 app.post('/api/new-recipe', async (req, res) => {
-    const { name, title, steps, ingredients, images } = req.body
+    const { name, title, steps, ingredients, image } = req.body
     const { userId } = req.session
 
     const newRecipe = await Recipe.create({userId, name, title, steps, ingredients, images: image})
