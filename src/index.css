@@ -12,6 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -113,6 +116,13 @@ button:focus-visible {
  border:none;	
  outline:none;
  border-bottom:1px solid #747bff;	
+}
+
+.loginpage {
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  width: 400px;
+  align-items: center;
+  flex-direction: column;
 }
 
 
