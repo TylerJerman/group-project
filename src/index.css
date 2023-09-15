@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #E7D7C1;
+  background-color: #473834;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,12 +19,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #8C1C13;
   text-decoration: inherit;
   cursor: pointer;
 }
 a:hover {
-  color: #535bf2;
+  color: #BF4342;
 }
 
 body {
@@ -52,7 +52,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #8C1C13;
 }
 button:focus,
 button:focus-visible {
@@ -73,28 +73,42 @@ button:focus-visible {
   align-items: center;
   /* font-size: x-large; */
   margin-bottom: 17px;
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  border-radius: 5px;
+  padding-top: 335px;
+  margin-top: 5px;
+  margin: 20px;
+  padding: 20px;
+  background: #1a1a1a;
   
   
 }
 .recipecard:hover {
-  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
-  border-radius: 5px;
-  outline: 1px auto #646cff;
-  padding-top: 10px;
-  margin-top: 5px;
+ 
+  outline: 1px auto #BF4342;
+  
 
 }
 
 .thumbnail {
   height: 15em;
   width: 30em;
-  border-radius: 5px;
+  border-radius: 15px;
   object-fit: cover;
+  padding: 35px
 }
 
 .title {
   margin: 0;
   font-size: x-large;
+}
+
+.trunc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300px;
+  margin-left: 40px;
 }
 
 
@@ -107,7 +121,7 @@ button:focus-visible {
   border:0;
   border-bottom:1px solid #555;  
   background:transparent;
-  /* width:100%; */
+  width:80%;
   padding:8px 0 5px 0;
   font-size:16px;
   color:#fff;
@@ -115,16 +129,40 @@ button:focus-visible {
 .input-container input:focus{ 
  border:none;	
  outline:none;
- border-bottom:1px solid #747bff;	
+ border-bottom:1px solid #A78A7F;	
 }
 
 .loginpage {
   box-shadow: 0 15px 35px rgba(0,0,0,9);
-  width: 400px;
+  width: 25em;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0px;
+  padding-bottom: 35px;
+  background: #1a1a1a;;
+}
+
+.signuppage {
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  width: 25em;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 0.5px;
+  padding-bottom: 10px;
+  background: #1a1a1a;;
+}
+
+.editform {
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  width: 25em;
   align-items: center;
   flex-direction: column;
 }
 
+.delete-btn:hover {
+
+  background: #8C1C13;
+}
 
 
 @media (prefers-color-scheme: light) {
