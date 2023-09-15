@@ -71,11 +71,11 @@ Recipe.init(
     title: {
       type: DataTypes.STRING
     },
+    ingredients: {
+      type: DataTypes.TEXT
+    },
     steps: {
       type: DataTypes.TEXT,
-    },
-    ingredients: {
-      type: DataTypes.STRING
     },
     images: {
         type: DataTypes.TEXT
