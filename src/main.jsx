@@ -33,6 +33,7 @@ const router = createBrowserRouter(
           <Route index element={<IndexPage />}
           loader={async () => {
             const res = await axios.get(`/api/recipes`);
+            console.log({recipes: res.data})
             return { recipes: res.data };
           }}
         />
