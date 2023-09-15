@@ -49,6 +49,9 @@ User.init(
     password: {
       type: DataTypes.STRING,
     },
+    profilePic: {
+      type: DataTypes.TEXT
+    }
   },
   {
     modelName: "users",

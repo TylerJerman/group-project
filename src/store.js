@@ -34,6 +34,9 @@ const reducer = (state = initialState, action) =>
         case 'IS_USERS_RECIPE':
             let isUsersRecipeState = { ...state, isUsersRecipe: action.payload }
             return isUsersRecipeState
+        case 'SET_PROFILE_PIC':
+            let profilePicState = { ...state, profilePic: action.payload }
+            return profilePicState
         // add new cases below
         default:
             return state

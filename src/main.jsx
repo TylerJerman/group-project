@@ -23,30 +23,19 @@ import RecipeForm from './Frontend/newRecipeForm.jsx';
 import NewRecipePage from './Frontend/newRecipePage.jsx';
 import Comments from './Frontend/Comments.jsx';
 import UserProfile from './Frontend/UserProfile.jsx';
+import Secret from './Frontend/secret.jsx';
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     
-      <Route path="/" element={<App />} >
-        <Route index element={<IndexPage />}
-         loader={async () => {
-          const res = await axios.get(`/api/recipes`);
-          return { recipes: res.data };
-        }}
-        
-        />
-
-        {/** */}
-        {/* <Route
-          
-          path="recipes"
-          element={<Timeline />}
+        <Route path="/" element={<App />} >
+          <Route index element={<IndexPage />}
           loader={async () => {
             const res = await axios.get(`/api/recipes`);
             return { recipes: res.data };
           }}
-        /> */}
+        />
 
         <Route
           path="recipes/:recipeId"
@@ -60,7 +49,7 @@ const router = createBrowserRouter(
           }}
         />
 
-<Route
+        <Route
           path="users/:userId"
           element={<UserProfile />}
           loader={async ({ params }) => {
@@ -75,9 +64,8 @@ const router = createBrowserRouter(
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
         <Route path="newrecipe" element={<NewRecipePage />} />
+        <Route path="secret" element={<Secret/>}/>
         
-
-
       </Route>
   )
 );
