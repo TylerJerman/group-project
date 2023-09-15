@@ -115,7 +115,7 @@ export default function LogIn()
     return (
         <>
         { !userName && 
-            <div>
+            <div className="loginpage">
                 <h1>Log In</h1>
                 <div className="input-container">
                     <input  type="email" placeholder="email" onChange={(event) => {setEmail(event.target.value)}}/>
