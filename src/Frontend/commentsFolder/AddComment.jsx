@@ -33,12 +33,14 @@ export default function AddComment() {
           addComment()
       }}
     >
+      <div className="input-container">
         <label htmlFor="comment"> Comment: </label>
         <input 
         name="comment" 
         id="comment" 
         type="text" 
         onChange={(e) => setComment(e.target.value)} />
+        </div>
       <button 
       type="submit" > Submit </button>
     </form>
