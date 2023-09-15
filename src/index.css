@@ -107,7 +107,7 @@ button:focus-visible {
   border:0;
   border-bottom:1px solid #555;  
   background:transparent;
-  /* width:100%; */
+  width:80%;
   padding:8px 0 5px 0;
   font-size:16px;
   color:#fff;
@@ -123,8 +123,24 @@ button:focus-visible {
   width: 400px;
   align-items: center;
   flex-direction: column;
+  padding: 20px 0px;
 }
 
+.signuppage {
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  width: 400px;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 0.5px;
+  
+}
+
+.editform {
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  width: 400px;
+  align-items: center;
+  flex-direction: column;
+}
 
 
 @media (prefers-color-scheme: light) {

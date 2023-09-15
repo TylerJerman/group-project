@@ -116,7 +116,7 @@ export default function LogIn()
         <>
         { !userName && 
             <div className="loginpage">
-                <h1>Log In</h1>
+                <h2>LOG IN</h2>
                 <div className="input-container">
                     <input  type="email" placeholder="email" onChange={(event) => {setEmail(event.target.value)}}/>
                 </div>
@@ -124,7 +124,7 @@ export default function LogIn()
                     
                     <input type="password" placeholder="password" onChange={(event) => {setPassword(event.target.value)}}/>
                 </div>
-                <button type="submit" onClick={ClickLogIn}> log in!</button>
+                <button type="submit" onClick={ClickLogIn}>submit</button>
                 { err.length > 0 &&
                     <div>{errMsg}</div>
                 }
@@ -140,17 +140,17 @@ export default function LogIn()
             <>
                 { editing.length < 1 &&
                     <>
-                        <h1>You are already logged in</h1>
+                        <h2>You are already logged in</h2>
                         { youSure.length < 1 &&
                             <>
                                 <div>
-                                    <a onClick={areYouSure}>Delete Account</a>
+                                    <button className="delete-btn" onClick={areYouSure}>Delete Account</button>
                                 </div>
                                 <div>
-                                   <a onClick={editAccount}>Edit Account</a>
+                                   <button onClick={editAccount}>Edit Account</button>
                                 </div> 
                                 <div>
-                                    <a onClick={logOut}>Log Out</a>
+                                    <button onClick={logOut}>Log Out</button>
                                 </div>
                             </>
                         }
@@ -164,19 +164,21 @@ export default function LogIn()
                 }
                 { editing.length > 1 &&
                     <>
+                    <div className="editform">
                         <h1>Edit Account</h1>
-                        <div>
+                        <div className="input-container">
                             <input type="text" placeholder="First Name:" onChange={(event) => setFirstName(event.target.value)}/>
                             <input type="text" placeholder="Last Name:" onChange={(event) => setLastName(event.target.value)}/>
                         </div>
-                        <div>
+                        <div className="input-container">
                             <input type="text" placeholder="Email:" onChange={(event) => setNewEmail(event.target.value)}/>
                             <input type="password" placeholder="Password:" onChange={(event) => setPassword(event.target.value)}/>
                         </div>
-                        <div>
+                        <div className="input-container">
                             <input type="text" placeholder="Profile Pic URL" onChange={(event) => setProfilePic(event.target.value)}/>
                         </div>
-                        <input type="submit" onClick={updateAccount}/>
+                        <button type="submit" onClick={updateAccount}> Edit Account </button>
+                    </div>
                     </>
                 }
             </>

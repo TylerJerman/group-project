@@ -22,7 +22,7 @@ nav li {
 }
 
 nav {
-  padding: 15px;
+  padding: 20px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -73,10 +73,11 @@ textarea {
 .navProfile
 {
   border-radius: 100%;
-  height: 50px;
-  float: left;
-  margin-top: 1.5%;
-  
+  height: 3em;
+  position: fixed;
+  top: 8px;
+  left: 15px;
+ 
 }
 
 .rainbow{
