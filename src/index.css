@@ -143,6 +143,10 @@ button:focus-visible {
   flex-direction: column;
 }
 
+.delete-btn:hover {
+  border-color: rgb(219, 12, 60);
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
