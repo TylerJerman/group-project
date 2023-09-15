@@ -76,7 +76,7 @@ export default function Timeline() {
       ));
     return (
       <>
-        <h1>recipes</h1>
+        <h1>Recipes</h1>
         <ul className='recipelist'>{recipeListItems}</ul>
 
         { userName &&
