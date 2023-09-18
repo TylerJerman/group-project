@@ -12,7 +12,7 @@ export default function UserProfile() {
 
           <h1>{firstName} {lastName}</h1>
           
-          <p>{recipes}</p><p>{email}</p><p>{password}</p>
+          <p>{recipes}</p><p>Email: {email}</p>
         </>
       );
 

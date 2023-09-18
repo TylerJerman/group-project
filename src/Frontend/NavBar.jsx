@@ -1,19 +1,27 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Secret from "./secret"
+import { useNavigate } from "react-router-dom"
 
 export default function NavBar()
 {
 
     const profilePic = useSelector((state) => state.profilePic)
     const userName = useSelector((state) => state.userName)
+    const userId = useSelector((state) => state.userId) 
+    const navigate = useNavigate()
+
+    const userProfile = () =>
+    {
+        navigate(`/users/${userId}`)
+    }
     
     return (
         <nav>
             <div>
                 { profilePic &&
                     <li>
-                        <img className="navProfile" src={profilePic} alt="profile picture"/>
+                        <img style={{cursor:'pointer'}} onClick={userProfile} className="navProfile" src={profilePic} alt="profile picture"/>
                     </li>
                 }
                 <li className="leftMostLi">
