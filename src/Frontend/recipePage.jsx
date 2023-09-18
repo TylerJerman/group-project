@@ -88,7 +88,7 @@ export default function RecipePage() {
       return (
        <div>
          <div>
-           <h1>{title}</h1>
+           <h1 className='recipe-title'>{title}</h1>
            { userName &&
              <div>
                <>
@@ -105,7 +105,7 @@ export default function RecipePage() {
              </div>
            }
          </div>
-         <img alt={images} src={images} />
+         <img className='recipe-image' alt={images} src={images} />
          {console.log(images)}
          <p>{ingredients}</p>
          <p>{steps}</p>

@@ -78,7 +78,7 @@ Recipe.init(
       type: DataTypes.TEXT
     },
     steps: {
-      type: DataTypes.TEXT,
+      type: DataTypes.ARRAY(DataTypes.TEXT)
     },
     images: {
         type: DataTypes.TEXT
