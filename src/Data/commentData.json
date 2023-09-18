@@ -40,5 +40,172 @@
     "userName": "JohnDoe",
     "message": "Bad recipe boss.",
     "userId": "1"
+  },
+  {
+    "recipeId": "3",
+    "userName": "TreyCorrea",
+    "message": "Looks fantastic",
+    "userId": "4"
+  },
+  {
+    "recipeId": "3",
+    "userName": "MikeJohnson",
+    "message": "Oh YaYuh, looks yummy",
+    "userId": "3"
+  },
+  {
+    "recipeId": "3",
+    "userName": "JohnDoe",
+    "message": "Wow this is kind of poggers",
+    "userId": "1"
+  },
+  {
+    "recipeId": "3",
+    "userName": "JaneSmith",
+    "message": "I can't wait to make this, wow!",
+    "userId": "2"
+  },
+  {
+    "recipeId": "4",
+    "userName": "JaneSmith",
+    "message": "I do not like this recipe, had trouble following instructions",
+    "userId": "2"
+  },
+  {
+    "recipeId": "4",
+    "userName": "JohnDoe",
+    "message": "Wowza I love this recipe",
+    "userId": "1"
+  },
+  {
+    "recipeId": "4",
+    "userName": "MikeJohnson",
+    "message": "Good recipe boss.",
+    "userId": "3"
+  },
+  {
+    "recipeId": "4",
+    "userName": "TreyCorrea",
+    "message": "Unbelievable, love this recipe.",
+    "userId": "4"
+  },
+  {
+    "recipeId": "5",
+    "userName": "JaneSmith",
+    "message": "Love the description of this recipe, thanks a million",
+    "userId": "2"
+  },
+  {
+    "recipeId": "5",
+    "userName": "MikeJohnson",
+    "message": "My name is Mike Johnson hello",
+    "userId": "3"
+  },
+  {
+    "recipeId": "5",
+    "userName": "TreyCorrea",
+    "message": "@MikeJohnson this is a comment section for the recipe, not an introduction area lol",
+    "userId": "4"
+  },{
+    "recipeId": "5",
+    "userName": "JohnDoe",
+    "message": "@MikeJohnson get this MikeJohnson propaganda out of here, thanks",
+    "userId": "1"
+  },
+  {
+    "recipeId": "6",
+    "userName": "JohnDoe",
+    "message": "Wow this is kind of poggers only a little bit",
+    "userId": "1"
+  },
+  {
+    "recipeId": "6",
+    "userName": "JaneSmith",
+    "message": "This was a great description",
+    "userId": "2"
+  },
+  {
+    "recipeId": "6",
+    "userName": "MikeJohnson",
+    "message": "Looks delicious",
+    "userId": "3"
+  },
+  {
+    "recipeId": "6",
+    "userName": "TreyCorrea",
+    "message": "I love coding in react, makes things so much easier than raw js",
+    "userId": "4"
+  },
+  {
+    "recipeId": "7",
+    "userName": "JohnDoe",
+    "message": "Sauce on this one looks great",
+    "userId": "1"
+  },
+  {
+    "recipeId": "7",
+    "userName": "JaneSmith",
+    "message": "Blah blah blah lorem ipsum, Sam Dorius, Tyler Jerman, and Jens Cox made this site it is very popular and cool",
+    "userId": "2"
+  },
+  {
+    "recipeId": "7",
+    "userName": "MikeJohnson",
+    "message": "Hello again, it is me MikeJohnson back at it again",
+    "userId": "3"
+  },
+  {
+    "recipeId": "7",
+    "userName": "TreyCorrea",
+    "message": "@MikeJohnson, you're weird",
+    "userId": "4"
+  },
+  {
+    "recipeId": "8",
+    "userName": "JohnDoe",
+    "message": "Tasty, this one's going in the history books",
+    "userId": "1"
+  },
+  {
+    "recipeId": "8",
+    "userName": "JaneSmith",
+    "message": "Not real",
+    "userId": "2"
+  },
+  {
+    "recipeId": "8",
+    "userName": "MikeJohnson",
+    "message": "I like Meatballs and Alfredo",
+    "userId": "3"
+  },
+  {
+    "recipeId": "8",
+    "userName": "TreyCorrea",
+    "message": "Spent so much time making this, worth it though",
+    "userId": "4"
+  },
+  {
+    "recipeId": "9",
+    "userName": "JohnDoe",
+    "message": "Hip hip hooray",
+    "userId": "1"
+  },
+  {
+    "recipeId": "9",
+    "userName": "JaneSmith",
+    "message": "Make this gourmet please",
+    "userId": "2"
+  },
+  {
+    "recipeId": "9",
+    "userName": "MikeJohnson",
+    "message": "I'm MikeJohnson hello hello hello hello hello",
+    "userId": "3"
+  },
+  {
+    "recipeId": "9",
+    "userName": "TreyCorrea",
+    "message": "Very good recipe",
+    "userId": "4"
   }
 ]

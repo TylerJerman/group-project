@@ -1,12 +1,17 @@
 [   
-         {
-            "userName": "TreyCorrea",
-            "recipeName": "Cereal",
-            "isUpVote": "false"
+        {
+            "userName": "JohnDoe",
+            "recipeName": "Toast", 
+            "isUpVote": "true"  
+        },
+        {
+            "userName": "MikeJohnson",
+            "recipeName": "Toast",
+            "isUpVote": "true"
         },
         {
             "userName": "TreyCorrea",
-            "recipeName": "Toast",
-            "isUpVote": "true"
+            "recipeName": "Cereal",
+            "isUpVote": "false"
         }
 ]
