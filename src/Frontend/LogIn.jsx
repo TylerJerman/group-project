@@ -3,6 +3,7 @@ import axios from "axios"
 import { Link, Navigate } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+import { first } from "lodash"
 
 
 export default function LogIn()
@@ -101,15 +102,23 @@ export default function LogIn()
 
     const updateAccount = async () =>
     {
-        const user = {email: reduxEmail, password: password, firstName: firstName, lastName: lastName, newEmail: newEmail, profilePic: profilePic, userId: userId}
-
-
-        await axios.post('/api/updateAccount', user)
-
-        setEditing('')
-        dispatch({'type': 'SET_EMAIL', 'payload': newEmail})
-        dispatch({'type': 'SET_PROFILE_PIC', 'payload': profilePic})
-        dispatch({'type': 'SET_USERNAME', 'payload': (firstName + lastName)})
+        if (email !== '' && password !== '' && firstName !== '' && lastName !== '')
+        {
+            const user = {email: reduxEmail, password: password, firstName: firstName, lastName: lastName, newEmail: newEmail, profilePic: profilePic, userId: userId}
+    
+    
+            await axios.post('/api/updateAccount', user)
+    
+            setEditing('')
+            dispatch({'type': 'SET_EMAIL', 'payload': newEmail})
+            dispatch({'type': 'SET_PROFILE_PIC', 'payload': profilePic})
+            dispatch({'type': 'SET_USERNAME', 'payload': (firstName + lastName)})
+        }
+        else
+        {
+            setErr('error')
+            setErrMsg('please fill out every box')
+        }
     }
 
     return (
@@ -177,6 +186,9 @@ export default function LogIn()
                         <div className="input-container">
                             <input type="text" placeholder="Profile Pic URL" onChange={(event) => setProfilePic(event.target.value)}/>
                         </div>
+                        { err.length > 0 &&
+                            <div>{errMsg}</div>
+                        }
                         <button type="submit" onClick={updateAccount}> Edit Account </button>
                     </div>
                     </>
