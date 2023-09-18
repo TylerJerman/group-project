@@ -37,6 +37,9 @@ const reducer = (state = initialState, action) =>
         case 'SET_PROFILE_PIC':
             let profilePicState = { ...state, profilePic: action.payload }
             return profilePicState
+        case 'SET_EDITING':
+            let editingState = { ...state, editing: action.payload }
+            return editingState
         // add new cases below
         default:
             return state

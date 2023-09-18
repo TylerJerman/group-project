@@ -28,7 +28,7 @@ export default function LogIn()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const [editing, setEditing] = useState('')
+    const editing = useSelector((state) => state.editing)
     const [profilePic, setProfilePic] = useState('https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg')
 
     const userId = useSelector((state) => state.userId)
@@ -97,19 +97,20 @@ export default function LogIn()
 
     const editAccount = () =>
     {
-        setEditing('yes')
+        dispatch({'type': 'SET_EDITING', 'payload': 'yes'})
     }
 
     const updateAccount = async () =>
     {
-        if (email !== '' && password !== '' && firstName !== '' && lastName !== '')
+        
+        if (reduxEmail !== '' && password !== '' && firstName !== '' && lastName !== '')
         {
             const user = {email: reduxEmail, password: password, firstName: firstName, lastName: lastName, newEmail: newEmail, profilePic: profilePic, userId: userId}
     
     
             await axios.post('/api/updateAccount', user)
     
-            setEditing('')
+            dispatch({'type': 'SET_EDITING', 'payload': ''})
             dispatch({'type': 'SET_EMAIL', 'payload': newEmail})
             dispatch({'type': 'SET_PROFILE_PIC', 'payload': profilePic})
             dispatch({'type': 'SET_USERNAME', 'payload': (firstName + lastName)})
