@@ -111,15 +111,37 @@ app.post('/api/updateAccount', async (req, res) =>
 })
 
 // post new recipe
+// app.post('/api/new-recipe', async (req, res) => {
+//     const { name, title, steps, ingredients, image } = req.body
+//     const { userId } = req.session
+
+//     const newRecipe = await Recipe.create({userId, name, title, steps, ingredients, images: image})
+//     console.log(req.body)
+
+//     res.json(newRecipe)
+// })
+
 app.post('/api/new-recipe', async (req, res) => {
-    const { name, title, steps, ingredients, image } = req.body
-    const { userId } = req.session
+    const { name, title, steps, ingredients, image } = req.body;
+    const { userId } = req.session;
 
-    const newRecipe = await Recipe.create({userId, name, title, steps, ingredients, images: image})
-    console.log(req.body)
+    // Split the 'steps' string into an array based on numbers as delimiters
+    const parsedSteps = steps.split(/\d+\.\s*/).filter(step => step.trim() !== '');
 
-    res.json(newRecipe)
-})
+    const newRecipe = await Recipe.create({
+        userId,
+        name,
+        title,
+        steps: parsedSteps, // Use the parsedSteps array
+        ingredients,
+        images: image
+    });
+
+    console.log(req.body);
+
+    res.json(newRecipe);
+});
+
 
 // get users
 app.get('/api/users', async (req, res) => {
