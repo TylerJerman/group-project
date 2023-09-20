@@ -144,3 +144,8 @@ textarea {
   margin-bottom: -20px;
   margin-top: -10px;
 }
+
+.stepsBox
+{
+  display: inline-block;
+}
