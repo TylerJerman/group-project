@@ -77,11 +77,6 @@ ol {
   font-family: inherit;
 }
 
-.steps {
-  padding: 40px;
-  max-width: 50%;
-}
-
 .recipelist {
   display: flex;
   flex-flow: row wrap;
