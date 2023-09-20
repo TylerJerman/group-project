@@ -82,10 +82,19 @@ export default function RecipePage() {
     setShowEdit('true')
   }
 
+  
   const recipeSteps = steps.map((step) => {
-   return <li>{step}</li>
+    return <li><p>{step}</p></li>
   })
-
+  
+  const ingredientsList = ingredients.map((ingredient) => {
+    return <li>
+      <label class="container">{ingredient}
+      <input  type="checkbox" />
+      <span class="checkmark"></span>
+      </label>
+    </li>
+  })
   
     if (ratingMessage)
     {
@@ -111,8 +120,11 @@ export default function RecipePage() {
          </div>
          <img className='recipe-image' alt={images} src={images} />
          {console.log(images)}
-         <p>{ingredients}</p>
-         <ol>{recipeSteps}</ol>
+         <div className='recipe-info'>
+          <ul>{ingredientsList}</ul>
+          <ol>{recipeSteps}</ol>
+         </div>
+         
        
          <Comments comments={comments} recipeId={recipeId} />
          { isUsersRecipe.length > 1 &&
@@ -146,8 +158,10 @@ export default function RecipePage() {
             }
           </div>
           <img src={images} />
-          <p>{ingredients}</p>
-          <ol>{recipeSteps}</ol>
+          <div className='recipe-info'>
+            <ul>{ingredientsList}</ul>
+            <ol>{recipeSteps}</ol>
+         </div>
           <Comments comments={comments} recipeId={recipeId} />
           { isUsersRecipe.length > 1 &&
           <>

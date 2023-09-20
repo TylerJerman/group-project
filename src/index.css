@@ -111,6 +111,13 @@ button:focus-visible {
   margin-left: 40px;
 }
 
+.recipe-info {
+  display: flex;
+  flex-flow: row wrap;
+  /* align-items: center; */
+  justify-content: center;
+}
+
 
 .input-container{
 	position:relative;

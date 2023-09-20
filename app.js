@@ -127,13 +127,14 @@ app.post('/api/new-recipe', async (req, res) => {
 
     // Split the 'steps' string into an array based on numbers as delimiters
     const parsedSteps = steps.split(/\d+\.\s*/).filter(step => step.trim() !== '');
+    const parsedIngredients = ingredients.split('\n').filter(ingredients => ingredients.trim() !== '');
 
     const newRecipe = await Recipe.create({
         userId,
         name,
         title,
         steps: parsedSteps, // Use the parsedSteps array
-        ingredients,
+        ingredients: parsedIngredients, // use the parsedIngredients array
         images: image
     });
 
@@ -197,14 +198,19 @@ app.get('/api/recipes/:id', async (req, res) => {
 
   // edit recipe
   app.post('/api/edit-recipe/recipes/:id', async (req, res) => {
+
+    
     const { id } = req.params
     const { title, steps, ingredients, images } = req.body
+
+    const parsedIngredients = ingredients.split('\n').filter(ingredients => ingredients.trim() !== '');
+    const parsedSteps = steps.split(/\d+\.\s*/).filter(step => step.trim() !== '');
 
     const recipe = await Recipe.findByPk(id)
 
     recipe.title = title 
-    recipe.steps = steps 
-    recipe.ingredients = ingredients 
+    recipe.steps = parsedSteps 
+    recipe.ingredients = parsedIngredients 
     recipe.images = images 
 
     await recipe.save()

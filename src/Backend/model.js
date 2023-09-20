@@ -75,7 +75,7 @@ Recipe.init(
       type: DataTypes.STRING
     },
     ingredients: {
-      type: DataTypes.TEXT
+      type: DataTypes.ARRAY(DataTypes.TEXT)
     },
     steps: {
       type: DataTypes.ARRAY(DataTypes.TEXT)
