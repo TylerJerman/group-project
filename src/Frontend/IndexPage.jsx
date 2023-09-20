@@ -81,7 +81,7 @@ export default function Timeline() {
 
         { userName &&
           <button>
-          <Link to='/newrecipe'> <div>add new recipe</div><div>+</div></Link>
+            <Link to='/newrecipe'> <div>add new recipe</div><div>+</div></Link>
           </button>
         }
       </>
