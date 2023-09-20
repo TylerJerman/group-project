@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: #E7D7C1;
-  background-color: #473834;
+  background-color: #584e4b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,12 +19,12 @@
 
 a {
   font-weight: 500;
-  color: #8C1C13;
+  color: #ee3527;
   text-decoration: inherit;
   cursor: pointer;
 }
 a:hover {
-  color: #BF4342;
+  color: #ff8929;
 }
 
 body {
@@ -120,7 +120,7 @@ button:focus-visible {
 
 .input-container input{ 
   border:0;
-  border-bottom:1px solid #555;  
+  border-bottom:1px solid #ffffff;  
   background:transparent;
   width:80%;
   padding:8px 0 5px 0;
