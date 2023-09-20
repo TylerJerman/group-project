@@ -154,6 +154,7 @@ app.get('/api/users/:id', async (req, res) => {
     const { id } = req.params
 
     const user = await User.findByPk(id)
+    
     res.json(user)
 })
 

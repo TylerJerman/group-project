@@ -25,6 +25,17 @@ export default function RecipePage() {
   const [downVoted, setDownVoted] = useState('')
   const [showEdit, setShowEdit] = useState('')
 
+  const [youSure, setYouSure] = useState('')
+
+  const areYouSure = () =>
+  {
+    setYouSure('yes')
+  }
+
+  const cancel = () =>
+  {
+    setYouSure('')
+  }
 
   const clickUpVote = async () =>
   {
@@ -74,12 +85,16 @@ export default function RecipePage() {
     const res = await axios.post(`/api/edit-recipe/recipes/${recipeId}`, formData);
 
     navigate('/')
-
   }
 
   const showEditForm = () =>
   {
     setShowEdit('true')
+  }
+
+  const hideEditForm = () =>
+  {
+    setShowEdit('')
   }
 
   const recipeSteps = steps.map((step) => {
@@ -114,16 +129,31 @@ export default function RecipePage() {
          <p>{ingredients}</p>
          <ol>{recipeSteps}</ol>
        
-         <Comments comments={comments} recipeId={recipeId} />
          { isUsersRecipe.length > 1 &&
           <>
-            <DeleteBtn onDelete={handleDelete} />
+            <div>
+            { youSure.length < 1 &&
+              <button onClick={areYouSure}>Delete Recipe</button>
+            }
+            { youSure.length > 1 &&
+              <>
+                <button onClick={handleDelete}>Are you sure?</button>
+                <button onClick={cancel}>Cancel</button>
+              </>
+            }
+            </div>
             <button onClick={showEditForm}>Edit Recipe</button>
             { showEdit.length > 1 &&
-              <EditForm onEdit={handleEdit}/>
+              <>
+                <EditForm onEdit={handleEdit}/>
+                <button onClick={hideEditForm}>Cancel</button>
+              </>
             }
           </>
          }
+         <div>
+          <Comments comments={comments} recipeId={recipeId} />
+         </div>
        </div>
      );
     }
