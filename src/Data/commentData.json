@@ -183,29 +183,5 @@
     "userName": "TreyCorrea",
     "message": "Spent so much time making this, worth it though",
     "userId": "4"
-  },
-  {
-    "recipeId": "9",
-    "userName": "JohnDoe",
-    "message": "Hip hip hooray",
-    "userId": "1"
-  },
-  {
-    "recipeId": "9",
-    "userName": "JaneSmith",
-    "message": "Make this gourmet please",
-    "userId": "2"
-  },
-  {
-    "recipeId": "9",
-    "userName": "MikeJohnson",
-    "message": "I'm MikeJohnson hello hello hello hello hello",
-    "userId": "3"
-  },
-  {
-    "recipeId": "9",
-    "userName": "TreyCorrea",
-    "message": "Very good recipe",
-    "userId": "4"
   }
 ]
