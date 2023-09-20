@@ -10,19 +10,28 @@ export default function AddComment() {
   const recipeId = useSelector((state) => state.recipeId)
   const userId = useSelector((state) => state.userId)
 
+  const [commentErr, setCommentErr] = useState('')
+
   const navigate = useNavigate()
 
   const addComment = async () =>
   {
-    const info = {message: comment, userName: userName, recipeId: recipeId, userId: userId}
-
-    console.log(recipeId)
-
-    const {data} = await axios.post('/api/newComment', info)
-
-    console.log(data)
-
-    navigate('/recipes/' + recipeId)
+    if (comment !== '')
+    {
+      const info = {message: comment, userName: userName, recipeId: recipeId, userId: userId}
+  
+      console.log(recipeId)
+  
+      const {data} = await axios.post('/api/newComment', info)
+  
+      console.log(data)
+  
+      navigate('/recipes/' + recipeId)
+    }
+    else
+    {
+      setCommentErr('Cannot Submit Empty Comment')
+    }
   }
 
 
@@ -39,10 +48,12 @@ export default function AddComment() {
         name="comment" 
         id="comment" 
         type="text" 
-        onChange={(e) => setComment(e.target.value)} />
+        onChange={(e) => setComment(e.target.value.trim())} />
         </div>
-      <button 
-      type="submit" > Submit </button>
+      <button type="submit" > Submit </button>
+      { commentErr.length > 1 &&
+        <h2>Cannot Submit Empty Comment</h2>
+      }
     </form>
   );
 }
