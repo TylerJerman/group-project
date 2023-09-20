@@ -2,49 +2,49 @@
     {
       "userId": "1",
       "title": "Cereal",
-      "ingredients": "Cereal and milk of choice",
-      "steps": ["Pour the CEREAL out first.", "Then you can pour the MILK in second.. No way around it those are the rules no cuts no buts no coconuts."],
+      "ingredients": ["cereal", "milk"],
+      "steps": ["Pour the CEREAL out first and then you can pour the MILK in second.. No way around it those are the rules no cuts no buts no coconuts."],
       "images": "https://th.bing.com/th/id/R.787e8f5938e3478ec0d57ded2875b2b7?rik=6VeJLuZitBp9bw&riu=http%3a%2f%2fa4.images.reviewed.com%2fimage%2ffetch%2fs--l8GQF4AU--%2fc_fill%2ccs_srgb%2cf_auto%2cfl_progressive.strip_profile%2cg_center%2cq_jpegmini%2cw_1200%2fhttps%3a%2f%2freviewed-production.s3.amazonaws.com%2f1488862064000%2fcereal-hero.jpg&ehk=UGRVJ2G3nmCiB61mBd3bMCoUzL%2fyPDt6VrJIaTC5vcc%3d&risl=&pid=ImgRaw&r=0"
     },
     {
         "userId": "2",
         "title": "Toast",
-        "ingredients": "Bread, butter and your toasting appliance of choice",
-        "steps": ["Spread the butter on the bread", "Then use one of these: air fryer, electric/gas stove in a pan, microwave maybe, like a fricken match that you lit, toast it over a fire pit on a poker, doesn't have to be a fire pit it could be like a dumpster fire or a local burning building lit by some arsonist, but if you're thick skulled then you can just use a toaster..."],
+        "ingredients": ["bread","butter","toast"],
+        "steps": ["Spread the butter on the bread and then use one of these: air fryer, electric/gas stove in a pan, microwave maybe, like a fricken match that you lit, toast it over a fire pit on a poker, doesn't have to be a fire pit it could be like a dumpster fire or a local burning building lit by some arsonist, but if you're thick skulled then you can just use a toaster..."],
         "images": "https://th.bing.com/th/id/R.ba19a68a576a7a2512253f5c2f8d26b7?rik=vft4mZKtC6q7BQ&pid=ImgRaw&r=0"
        
       },
       {
         "userId": "2",
         "title": "Meatball Alfredo",
-        "ingredients": "Meatballs, Noodles, and Alfredo sauce",
-        "steps": ["Some people really don't like marinara sauce and that just sucks man, this recipe is for you.. You weirdo. Cook the noodles in water", "Then microwave or cook the meatballs.", "After that it is time for the sauce DON'T EVEN THINK ABOUT SUBBING OUT THE ALFREDO FOR MARINARA. Remember, you are weird and chose to put alfredo (a sauce that is great with chicken) on these meatballs and noodles.", "Who eats this huh? Are you eating this?"],
+        "ingredients": ["Meatballs", "Noodles", "Alfredo sauce"],
+        "steps": ["Some people really don't like marinara sauce and that just sucks man, this recipe is for you.. You weirdo.", "Cook the noodles in water", "Then microwave or cook the meatballs.", "After that it is time for the sauce DON'T EVEN THINK ABOUT SUBBING OUT THE ALFREDO FOR MARINARA. Remember, you are weird and chose to put alfredo (a sauce that is great with chicken) on these meatballs and noodles.", "Who eats this huh? Are you eating this?"],
         "images":"https://www.eatprimemeals.com/wp-content/uploads/2021/11/Alfredo-Chicken-Meatballs-1-scaled.jpeg"
       },
       {
         "userId": "3",
         "title": "Bread",
-        "ingredients": "Flour, egg, milk, yeast, baking powder",
+        "ingredients": ["Flour", "egg", "milk", "yeast", "baking powder"],
         "steps": ["Dude it's just bread", "Mix all of this and throw it in the oven. It's not that hard, really."],
         "images":"https://therectangular.com/wp-content/uploads/2020/10/gourmet-bread-recipes-awesome-beer-rye-sourdough-the-bojon-gourmet-of-gourmet-bread-recipes.jpg"
       },{
         "userId": "1",
         "title": "Tacos",
-        "ingredients": "Taco shell, meat, cheese, and pico de gallo",
+        "ingredients": ["Taco shell", "meat", "cheese", "pico de gallo"],
         "steps": ["Toss everything in the taco shell"],
         "images":"https://www.samtell.com/hs-fs/hubfs/Blogs/Four-Scrumptous-Tacos-Lined-up-with-ingredients-around-them-1.jpg?width=1800&name=Four-Scrumptous-Tacos-Lined-up-with-ingredients-around-them-1.jpg"
       },
       {
         "userId": "2",
         "title": "Burrito",
-        "ingredients": "Lots of stuff",
+        "ingredients": ["Lots of stuff"],
         "steps": ["Just go to Chipotle, come on."],
         "images":"https://www.isleofwightmeat.co.uk/wp-content/uploads/2020/03/shutterstock_1349138753-scaled.jpg"
       },
       {
         "userId": "1",
         "title": "French Toast",
-        "ingredients": "Bread: 4 slices (Preferably a day old. Options include challah, brioche, or any dense bread)Eggs: 2 Milk: 1/2 cup (120 ml) Vanilla Extract: 1 teaspoon (optional for flavor)Cinnamon: 1/4 teaspoon (optional for flavor) Salt: A pinch Butter: For frying Toppings: Maple syrup, powdered sugar, fresh berries, or whatever you like!",
+        "ingredients": ["Bread: 4 slices (Preferably a day old. Options include challah, brioche, or any dense bread)", "Eggs: 2", "Milk: 1/2 cup (120 ml)", "Vanilla Extract: 1 teaspoon (optional for flavor)", "Cinnamon: 1/4 teaspoon (optional for flavor)", "Salt: A pinch", "Butter: For frying", "Maple syrup", "powdered sugar", "fresh berries"],
         "steps": ["In a mixing bowl, whisk together the eggs, milk, vanilla extract (if using), cinnamon (if using), and salt.", "Heat a skillet or frying pan over medium heat.", "Add a bit of butter to coat the bottom. Dip each slice of bread into the egg mixture, making sure each side is well-coated.", "Fry each slice in the buttered skillet until golden brown on both sides.", "Serve hot with your choice of toppings! Enjoy your French toast!"],
         "images":"https://embed.widencdn.net/img/mccormick/htzunwgdp2/1365x1365px/quick_and_easy_french_toast_3898.jpg?crop=true&anchor=341,0&q=80&color=ffffffff&u=o2hyef"
       },
@@ -52,7 +52,7 @@
         "userId": "3",
         "title": "Pancakes",
         "ingredients": "Water, pancake batter",
-        "steps": ["Are you joking? Is this a joke? Do you seriously need this guide on how to cook a pancake? Unreal."],
+        "steps": ["Are you joking?", "Is this a joke?", "Do you seriously need this guide on how to cook a pancake?", "Unreal."],
         "images":"https://th.bing.com/th/id/OIP.ie6E1GrbcpMHkilblX_5HwHaHa?pid=ImgDet&rs=1"
       }
   ]

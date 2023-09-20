@@ -90,6 +90,14 @@ export default function RecipePage() {
   {
     setShowEdit('true')
   }
+  
+  const ingredientsList = ingredients.map((ingredient) => {
+    return <li>
+      <label class="container">{ingredient}
+      <input  type="checkbox" />
+      <span class="checkmark"></span>
+      </label>
+    </li>
 
   const hideEditForm = () =>
   {
@@ -99,7 +107,6 @@ export default function RecipePage() {
   const recipeSteps = steps.map((step) => {
    return <li className="step">{step}</li>
   })
-
   
     if (ratingMessage)
     {
@@ -125,10 +132,12 @@ export default function RecipePage() {
          </div>
          <img className='recipe-image' alt={images} src={images} />
          {console.log(images)}
-         <h2 className='ingredients'>Ingredients:</h2>
-         <p className="stepsBox">{ingredients}</p>
-         <h2 className="stepsTitle">Steps:</h2>
-         <ol className='steps1'>{recipeSteps}</ol>
+         <div className='recipe-info'>
+          <h2 className='ingredients'>Ingredients:</h2>
+          <p className="stepsBox">{ingredients}</p>
+          <h2 className="stepsTitle">Steps:</h2>
+          <ol className='steps1'>{recipeSteps}</ol>
+         </div>
          { isUsersRecipe.length > 1 &&
           <>
             <div>
@@ -176,10 +185,12 @@ export default function RecipePage() {
             }
           </div>
           <img src={images} />
-          <h2 className='ingredients'>Ingredients:</h2>
-          <p className="stepsBox">{ingredients}</p>
-          <h2 className='stepsTitle'>Steps:</h2>
-          <ol className='steps1'>{recipeSteps}</ol>
+          <div className='recipe-info'>
+            <h2 className='ingredients'>Ingredients:</h2>
+            <p className="stepsBox">{ingredients}</p>
+            <h2 className='stepsTitle'>Steps:</h2>
+            <ol className='steps1'>{recipeSteps}</ol>
+          </div>
           { isUsersRecipe.length > 1 &&
             <>
               <div>
