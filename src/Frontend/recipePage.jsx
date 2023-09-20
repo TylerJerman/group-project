@@ -20,7 +20,6 @@ export default function RecipePage() {
   const ratingMessage = useSelector((state) => state.ratingMessage)
 
   const isUsersRecipe = useSelector((state) => state.isUsersRecipe)
-  console.log(isUsersRecipe)
 
   const [downVoted, setDownVoted] = useState('')
   const [showEdit, setShowEdit] = useState('')
@@ -111,15 +110,15 @@ export default function RecipePage() {
            { userName &&
              <div>
                <>
-               { ratingMessage.length < 3 &&
-                 <button onClick={clickUpVote}>^</button>
-               }
+                { ratingMessage.length < 3 &&
+                  <button onClick={clickUpVote}>^</button>
+                }
                </>
                <h3>Votes: {rating}</h3>
                <>
-               { ratingMessage.length > 2 &&
-                 <button onClick={clickDownVote}>v</button>
-               }
+                { ratingMessage.length > 2 &&
+                  <button onClick={clickDownVote}>v</button>
+                }
                </>
              </div>
            }
@@ -176,17 +175,32 @@ export default function RecipePage() {
           </div>
           <img src={images} />
           <p className="stepsBox">{ingredients}</p>
-          <ol>{recipeSteps}</ol>
-          <Comments comments={comments} recipeId={recipeId} />
+          <ol className='steps'>{recipeSteps}</ol>
           { isUsersRecipe.length > 1 &&
-          <>
-            <DeleteBtn onDelete={handleDelete} />
-            <button onClick={showEditForm}>Edit Recipe</button>
-            { showEdit.length > 1 &&
-              <EditForm onEdit={handleEdit}/>
-            }
-          </>
-         }
+            <>
+              <div>
+              { youSure.length < 1 &&
+                <button onClick={areYouSure}>Delete Recipe</button>
+              }
+              { youSure.length > 1 &&
+                <>
+                  <button onClick={handleDelete}>Are you sure?</button>
+                  <button onClick={cancel}>Cancel</button>
+                </>
+              }
+              </div>
+              <button onClick={showEditForm}>Edit Recipe</button>
+              { showEdit.length > 1 &&
+                <>
+                  <EditForm onEdit={handleEdit}/>
+                  <button onClick={hideEditForm}>Cancel</button>
+                </>
+              }
+            </>
+          }
+          <div>
+            <Comments comments={comments} recipeId={recipeId} />
+          </div>
         </div>
       );
     }
