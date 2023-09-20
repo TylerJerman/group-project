@@ -14,6 +14,7 @@ export default function NavBar()
     const dispatch = useDispatch()
 
     const editing = useSelector((state) => state.editing)
+    const ratingMessage = useSelector((state) => state.ratingMessage)
 
     const userProfile = () =>
     {
@@ -23,6 +24,7 @@ export default function NavBar()
     const resetEditing = () =>
     {
         dispatch({'type': 'SET_EDITING', 'payload': ''})
+        dispatch({'type': "SET_RATING_MESSAGE", 'payload': ''})
     }
     
     return (
