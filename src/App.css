@@ -109,7 +109,29 @@ textarea {
    padding-left: 115px; 
 } */
 
-/* .steps
+.steps1
+{
+  display: inline-block;
+  max-width: 50%;
+}
+
+.step
 {
   text-align: left;
-} */
+  padding: 10px;
+}
+
+.ingredients
+{
+  color: black;
+  font-size: 30px;
+  margin-bottom: -20px;
+}
+
+.stepsTitle
+{
+  color: black;
+  font-size: 30px;
+  margin-bottom: -20px;
+  margin-top: -10px;
+}

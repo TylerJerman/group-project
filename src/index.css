@@ -76,12 +76,6 @@ ol {
   font-family: inherit;
 }
 
-.steps {
-  max-width: 50%;
-  align-content: middle;
-  display: inline-block;
-}
-
 .recipelist {
   display: flex;
   flex-flow: row wrap;
