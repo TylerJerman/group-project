@@ -128,7 +128,7 @@ export default function RecipePage() {
          <h2 className='ingredients'>Ingredients:</h2>
          <p className="stepsBox">{ingredients}</p>
          <h2 className="stepsTitle">Steps:</h2>
-         <ol className='steps'>{recipeSteps}</ol>
+         <ol className='steps1'>{recipeSteps}</ol>
          { isUsersRecipe.length > 1 &&
           <>
             <div>
@@ -179,7 +179,7 @@ export default function RecipePage() {
           <h2 className='ingredients'>Ingredients:</h2>
           <p className="stepsBox">{ingredients}</p>
           <h2 className='stepsTitle'>Steps:</h2>
-          <ol className='steps'>{recipeSteps}</ol>
+          <ol className='steps1'>{recipeSteps}</ol>
           { isUsersRecipe.length > 1 &&
             <>
               <div>
