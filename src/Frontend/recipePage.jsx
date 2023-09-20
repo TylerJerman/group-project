@@ -125,9 +125,8 @@ export default function RecipePage() {
          </div>
          <img className='recipe-image' alt={images} src={images} />
          {console.log(images)}
-         <p>{ingredients}</p>
+         <p className="stepsBox">{ingredients}</p>
          <ol className='steps'>{recipeSteps}</ol>
-       
          { isUsersRecipe.length > 1 &&
           <>
             <div>
@@ -175,8 +174,8 @@ export default function RecipePage() {
             }
           </div>
           <img src={images} />
-          <p>{ingredients}</p>
-          <ol className="steps">{recipeSteps}</ol>
+          <p className="stepsBox">{ingredients}</p>
+          <ol className='steps'>{recipeSteps}</ol>
           { isUsersRecipe.length > 1 &&
             <>
               <div>
