@@ -20,11 +20,21 @@ export default function RecipePage() {
   const ratingMessage = useSelector((state) => state.ratingMessage)
 
   const isUsersRecipe = useSelector((state) => state.isUsersRecipe)
-  console.log(isUsersRecipe)
 
   const [downVoted, setDownVoted] = useState('')
   const [showEdit, setShowEdit] = useState('')
 
+  const [youSure, setYouSure] = useState('')
+
+  const areYouSure = () =>
+  {
+    setYouSure('yes')
+  }
+
+  const cancel = () =>
+  {
+    setYouSure('')
+  }
 
   const clickUpVote = async () =>
   {
@@ -74,18 +84,12 @@ export default function RecipePage() {
     const res = await axios.post(`/api/edit-recipe/recipes/${recipeId}`, formData);
 
     navigate('/')
-
   }
 
   const showEditForm = () =>
   {
     setShowEdit('true')
   }
-
-  
-  const recipeSteps = steps.map((step) => {
-    return <li><p>{step}</p></li>
-  })
   
   const ingredientsList = ingredients.map((ingredient) => {
     return <li>
@@ -94,6 +98,14 @@ export default function RecipePage() {
       <span class="checkmark"></span>
       </label>
     </li>
+
+  const hideEditForm = () =>
+  {
+    setShowEdit('')
+  }
+
+  const recipeSteps = steps.map((step) => {
+   return <li className="step">{step}</li>
   })
   
     if (ratingMessage)
@@ -105,15 +117,15 @@ export default function RecipePage() {
            { userName &&
              <div>
                <>
-               { ratingMessage.length < 3 &&
-                 <button onClick={clickUpVote}>^</button>
-               }
+                { ratingMessage.length < 3 &&
+                  <button onClick={clickUpVote}>^</button>
+                }
                </>
-               <h3>upvotes: {rating}</h3>
+               <h3>Votes: {rating}</h3>
                <>
-               { ratingMessage.length > 2 &&
-                 <button onClick={clickDownVote}>v</button>
-               }
+                { ratingMessage.length > 2 &&
+                  <button onClick={clickDownVote}>v</button>
+                }
                </>
              </div>
            }
@@ -121,21 +133,36 @@ export default function RecipePage() {
          <img className='recipe-image' alt={images} src={images} />
          {console.log(images)}
          <div className='recipe-info'>
-          <ul>{ingredientsList}</ul>
-          <ol>{recipeSteps}</ol>
+          <h2 className='ingredients'>Ingredients:</h2>
+          <p className="stepsBox">{ingredients}</p>
+          <h2 className="stepsTitle">Steps:</h2>
+          <ol className='steps1'>{recipeSteps}</ol>
          </div>
-         
-       
-         <Comments comments={comments} recipeId={recipeId} />
          { isUsersRecipe.length > 1 &&
           <>
-            <DeleteBtn onDelete={handleDelete} />
+            <div>
+            { youSure.length < 1 &&
+              <button onClick={areYouSure}>Delete Recipe</button>
+            }
+            { youSure.length > 1 &&
+              <>
+                <button onClick={handleDelete}>Are you sure?</button>
+                <button onClick={cancel}>Cancel</button>
+              </>
+            }
+            </div>
             <button onClick={showEditForm}>Edit Recipe</button>
             { showEdit.length > 1 &&
-              <EditForm onEdit={handleEdit}/>
+              <>
+                <EditForm onEdit={handleEdit}/>
+                <button onClick={hideEditForm}>Cancel</button>
+              </>
             }
           </>
          }
+         <div>
+          <Comments comments={comments} recipeId={recipeId} />
+         </div>
        </div>
      );
     }
@@ -150,7 +177,7 @@ export default function RecipePage() {
                 <>
                   <button onClick={clickUpVote}>^</button>
                 </>
-                <h3>upvotes: {rating}</h3>
+                <h3>Votes: {rating}</h3>
                 <>
                   <button onClick={clickDownVote}>v</button>
                 </>
@@ -159,19 +186,36 @@ export default function RecipePage() {
           </div>
           <img src={images} />
           <div className='recipe-info'>
-            <ul>{ingredientsList}</ul>
-            <ol>{recipeSteps}</ol>
-         </div>
-          <Comments comments={comments} recipeId={recipeId} />
+            <h2 className='ingredients'>Ingredients:</h2>
+            <p className="stepsBox">{ingredients}</p>
+            <h2 className='stepsTitle'>Steps:</h2>
+            <ol className='steps1'>{recipeSteps}</ol>
+          </div>
           { isUsersRecipe.length > 1 &&
-          <>
-            <DeleteBtn onDelete={handleDelete} />
-            <button onClick={showEditForm}>Edit Recipe</button>
-            { showEdit.length > 1 &&
-              <EditForm onEdit={handleEdit}/>
-            }
-          </>
-         }
+            <>
+              <div>
+              { youSure.length < 1 &&
+                <button onClick={areYouSure}>Delete Recipe</button>
+              }
+              { youSure.length > 1 &&
+                <>
+                  <button onClick={handleDelete}>Are you sure?</button>
+                  <button onClick={cancel}>Cancel</button>
+                </>
+              }
+              </div>
+              <button onClick={showEditForm}>Edit Recipe</button>
+              { showEdit.length > 1 &&
+                <>
+                  <EditForm onEdit={handleEdit}/>
+                  <button onClick={hideEditForm}>Cancel</button>
+                </>
+              }
+            </>
+          }
+          <div>
+            <Comments comments={comments} recipeId={recipeId} />
+          </div>
         </div>
       );
     }

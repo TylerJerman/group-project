@@ -2,6 +2,7 @@ import { NavLink, Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Secret from "./secret"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
 
 export default function NavBar()
 {
@@ -10,10 +11,20 @@ export default function NavBar()
     const userName = useSelector((state) => state.userName)
     const userId = useSelector((state) => state.userId) 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const editing = useSelector((state) => state.editing)
+    const ratingMessage = useSelector((state) => state.ratingMessage)
 
     const userProfile = () =>
     {
         navigate(`/users/${userId}`)
+    }
+
+    const resetEditing = () =>
+    {
+        dispatch({'type': 'SET_EDITING', 'payload': ''})
+        dispatch({'type': "SET_RATING_MESSAGE", 'payload': ''})
     }
     
     return (
@@ -25,7 +36,7 @@ export default function NavBar()
                     </li>
                 }
                 <li className="leftMostLi">
-                    <NavLink to="/">Home</NavLink>
+                    <NavLink onClick={resetEditing} to="/">Home</NavLink>
                 </li>
                 { userName && 
                     <li>

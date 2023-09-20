@@ -70,10 +70,6 @@ textarea {
   border-radius: 7px;
 }
 
-.steps {
-  padding: 40px;
-}
-
 .profile
 {
   width: 200px;
@@ -117,8 +113,34 @@ textarea {
   right: 0;
 }
 
-.leftMostLi
+/* .leftMostLi
 {
-  /* padding-left: 115px; */
+   padding-left: 115px; 
+} */
+
+.steps1
+{
+  display: inline-block;
+  max-width: 50%;
 }
 
+.step
+{
+  text-align: left;
+  padding: 10px;
+}
+
+.ingredients
+{
+  color: black;
+  font-size: 30px;
+  margin-bottom: -20px;
+}
+
+.stepsTitle
+{
+  color: black;
+  font-size: 30px;
+  margin-bottom: -20px;
+  margin-top: -10px;
+}

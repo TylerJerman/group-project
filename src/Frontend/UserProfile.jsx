@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function UserProfile() {
     const {
-        user: { firstName, lastName, recipes, email, password, profilePic, userId },
+        user: { firstName, lastName, recipes, email, profilePic, userId },
       } = useLoaderData();
 
     const dispatch = useDispatch()

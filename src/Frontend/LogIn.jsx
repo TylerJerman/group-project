@@ -32,6 +32,17 @@ export default function LogIn()
     const [profilePic, setProfilePic] = useState('https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg')
 
     const userId = useSelector((state) => state.userId)
+    const isUsersRecipe = useSelector((state) => state.isUsersRecipe)
+
+    if (!userName)
+    {
+        dispatch({'type': 'SET_USERNAME', 'payload': ''})
+    }
+
+    if (!editing)
+    {
+        dispatch({'type': 'SET_EDITING', 'payload': ''})
+    }
 
     const ClickLogIn = async () =>
     {
@@ -84,6 +95,7 @@ export default function LogIn()
     {
         dispatch({'type': 'SET_USERNAME', 'payload': ''})
         dispatch({'type': 'SET_PROFILE_PIC', 'payload': ''})
+        dispatch({'type': 'SET_USER_ID', 'payload': ''})
         const info = {email: reduxEmail}
         await axios.post('/api/deleteAccount', info)
     }
@@ -93,6 +105,7 @@ export default function LogIn()
         dispatch({'type': 'SET_USERNAME', 'payload': ''})
         dispatch({'type': 'SET_EMAIL', 'payload': ''})
         dispatch({'type': 'SET_PROFILE_PIC', 'payload': ''})
+        dispatch({'type': 'SET_USER_ID', 'payload': ''})
     }
 
     const editAccount = () =>

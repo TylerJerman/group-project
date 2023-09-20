@@ -139,13 +139,13 @@
   {
     "recipeId": "7",
     "userName": "JohnDoe",
-    "message": "Sauce on this one looks great",
+    "message": "Syrup on this one looks great",
     "userId": "1"
   },
   {
     "recipeId": "7",
     "userName": "JaneSmith",
-    "message": "Blah blah blah lorem ipsum, Sam Dorius, Tyler Jerman, and Jens Cox made this site it is very popular and cool",
+    "message": "Sam Dorius, Tyler Jerman, and Jens Cox made this site it is very popular and cool",
     "userId": "2"
   },
   {
@@ -182,30 +182,6 @@
     "recipeId": "8",
     "userName": "TreyCorrea",
     "message": "Spent so much time making this, worth it though",
-    "userId": "4"
-  },
-  {
-    "recipeId": "9",
-    "userName": "JohnDoe",
-    "message": "Hip hip hooray",
-    "userId": "1"
-  },
-  {
-    "recipeId": "9",
-    "userName": "JaneSmith",
-    "message": "Make this gourmet please",
-    "userId": "2"
-  },
-  {
-    "recipeId": "9",
-    "userName": "MikeJohnson",
-    "message": "I'm MikeJohnson hello hello hello hello hello",
-    "userId": "3"
-  },
-  {
-    "recipeId": "9",
-    "userName": "TreyCorrea",
-    "message": "Very good recipe",
     "userId": "4"
   }
 ]
