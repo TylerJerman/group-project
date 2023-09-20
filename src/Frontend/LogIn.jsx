@@ -33,6 +33,16 @@ export default function LogIn()
 
     const userId = useSelector((state) => state.userId)
 
+    if (!userName)
+    {
+        dispatch({'type': 'SET_USERNAME', 'payload': ''})
+    }
+
+    if (!editing)
+    {
+        dispatch({'type': 'SET_EDITING', 'payload': ''})
+    }
+
     const ClickLogIn = async () =>
     {
         const user = {email: email, password: password}

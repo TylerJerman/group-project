@@ -100,7 +100,7 @@ export default function RecipePage() {
                  <button onClick={clickUpVote}>^</button>
                }
                </>
-               <h3>upvotes: {rating}</h3>
+               <h3>Votes: {rating}</h3>
                <>
                { ratingMessage.length > 2 &&
                  <button onClick={clickDownVote}>v</button>
@@ -138,7 +138,7 @@ export default function RecipePage() {
                 <>
                   <button onClick={clickUpVote}>^</button>
                 </>
-                <h3>upvotes: {rating}</h3>
+                <h3>Votes: {rating}</h3>
                 <>
                   <button onClick={clickDownVote}>v</button>
                 </>
