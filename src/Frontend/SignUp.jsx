@@ -45,16 +45,16 @@ export default function SignUp()
         <div className="signuppage">
             <h2>CREATE ACCOUNT</h2>
             <div  className="input-container">
-                <input type="email" placeholder="email" onChange={(event) => {setEmail(event.target.value)}} />
+                <input type="email" placeholder="email" onChange={(event) => {setEmail(event.target.value.trim())}} />
             </div>
             <div  className="input-container">    
-                <input type="password" placeholder="password" onChange={(event) => {setPassword(event.target.value)}} />
+                <input type="password" placeholder="password" onChange={(event) => {setPassword(event.target.value.trim())}} />
             </div>
             <div  className="input-container">
-                <input type="text" placeholder="First Name" onChange={(event) => {setFirstName(event.target.value)}} />
+                <input type="text" placeholder="First Name" onChange={(event) => {setFirstName(event.target.value.trim())}} />
             </div>
             <div  className="input-container">    
-                <input type="text" placeholder="Last Name" onChange={(event) => {setLastName(event.target.value)}} />
+                <input type="text" placeholder="Last Name" onChange={(event) => {setLastName(event.target.value.trim())}} />
             </div>
             <div>
             <button type="submit" onClick={ClickSignUp}>submit</button>
