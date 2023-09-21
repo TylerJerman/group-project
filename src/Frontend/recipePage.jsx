@@ -117,7 +117,7 @@ export default function RecipePage() {
     if (ratingMessage)
     {
       return (
-       <div >
+        <div >
          <div className='recipe-title'>
            <h1 className='recipe-title'>{title}</h1>
            { userName &&
@@ -177,7 +177,7 @@ export default function RecipePage() {
          <div>
           <Comments comments={comments} recipeId={recipeId} />
          </div>
-      </>
+      </div>
      );
     }
     else
