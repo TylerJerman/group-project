@@ -95,10 +95,11 @@ export default function RecipePage() {
     return <li>
       <label class="container">{ingredient}
       <input  type="checkbox" />
-      <span class="checkmark"></span>
+      <span class="checkmark"> </span>
       </label>
     </li>
-  })
+  });
+
 
   const hideEditForm = () =>
   {
@@ -176,13 +177,13 @@ export default function RecipePage() {
          <div>
           <Comments comments={comments} recipeId={recipeId} />
          </div>
-       </div>
+      </>
      );
     }
     else
     {
       return (
-        <div>
+        <>
           <div>
             <h1>{title}</h1>
             { userName &&
@@ -234,7 +235,7 @@ export default function RecipePage() {
           <div>
             <Comments comments={comments} recipeId={recipeId} />
           </div>
-        </div>
+        </>
       );
     }
 }

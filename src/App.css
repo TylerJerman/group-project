@@ -160,15 +160,25 @@ textarea {
 
 .ingredients
 {
-  color: #8C1C13;
+  color: #5C946E;
   font-size: 30px;
   margin-bottom: -20px;
 }
 
 .stepsTitle
 {
-  color: #8C1C13;;
+  color: #5C946E;
   font-size: 30px;
   margin-bottom: -20px;
   margin-top: -10px;
+}
+
+.stepsBox
+{
+  display: inline-block;
+}
+
+.comment 
+{
+  color: #5C946E;
 }

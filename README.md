@@ -1,3 +1,7 @@
 # Reddit for Recipe's
 
-this isn't really freaking working but heres the README have fun balhalhdflajl;ajflajlfd;fjaklf;dajflk;dajfja;
+npm install
+
+node src/Backend/seed.js
+
+npm run dev
