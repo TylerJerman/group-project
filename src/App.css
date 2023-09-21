@@ -5,10 +5,17 @@
   text-align: center;
   /* display: flex;
   justify-content: center; */
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
  
 
 }
 
+button {
+  background: #1a1a1a;
+}
 
 img {
   max-width: 70%;
@@ -64,6 +71,10 @@ input {
 
 button {
   margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 5px 30px rgba(0,0,0,9);
+  min-width: 100px;
+  /* background: #8C1C13; */
 }
 
 textarea {
@@ -120,26 +131,43 @@ textarea {
 
 .steps1
 {
-  display: inline-block;
-  max-width: 50%;
+  /* display: inline-block;
+  max-width: 50%; */
+ 
 }
 
 .step
 {
-  text-align: left;
-  padding: 10px;
+  /* text-align: left;
+  padding: 10px; */
+  
+}
+
+.ingredients-card {
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  padding: 30px;
+  margin: 30px;
+  background: #1a1a1a;
+}
+
+.steps-card {
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  padding: 30px;
+  margin: 30px;
+  background: #1a1a1a;
+  width: 50%;
 }
 
 .ingredients
 {
-  color: black;
+  color: #8C1C13;
   font-size: 30px;
   margin-bottom: -20px;
 }
 
 .stepsTitle
 {
-  color: black;
+  color: #8C1C13;;
   font-size: 30px;
   margin-bottom: -20px;
   margin-top: -10px;

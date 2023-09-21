@@ -51,7 +51,7 @@
       {
         "userId": "3",
         "title": "Pancakes",
-        "ingredients": "Water, pancake batter",
+        "ingredients": ["Water, pancake batter"],
         "steps": ["Are you joking?", "Is this a joke?", "Do you seriously need this guide on how to cook a pancake?", "Unreal."],
         "images":"https://th.bing.com/th/id/OIP.ie6E1GrbcpMHkilblX_5HwHaHa?pid=ImgDet&rs=1"
       }

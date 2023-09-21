@@ -98,6 +98,7 @@ export default function RecipePage() {
       <span class="checkmark"></span>
       </label>
     </li>
+  })
 
   const hideEditForm = () =>
   {
@@ -105,14 +106,18 @@ export default function RecipePage() {
   }
 
   const recipeSteps = steps.map((step) => {
-   return <li className="step">{step}</li>
+   return <>
+
+    <li className="step">{step}</li><hr/>
+   
+   </>
   })
   
     if (ratingMessage)
     {
       return (
-       <div>
-         <div>
+       <div >
+         <div className='recipe-title'>
            <h1 className='recipe-title'>{title}</h1>
            { userName &&
              <div>
@@ -133,14 +138,20 @@ export default function RecipePage() {
          <img className='recipe-image' alt={images} src={images} />
          {console.log(images)}
          <div className='recipe-info'>
-          <h2 className='ingredients'>Ingredients:</h2>
-          <p className="stepsBox">{ingredients}</p>
+
+              <div className='ingredients-card'>
+                <h2 className='ingredients'>Ingredients:</h2>
+                <ul className="stepsBox">{ingredientsList}</ul>
+
+              </div> 
+          <div className='steps-card'>
           <h2 className="stepsTitle">Steps:</h2>
           <ol className='steps1'>{recipeSteps}</ol>
+          </div>
          </div>
          { isUsersRecipe.length > 1 &&
           <>
-            <div>
+            <div className='delete-recipe-div'>
             { youSure.length < 1 &&
               <button onClick={areYouSure}>Delete Recipe</button>
             }
@@ -151,6 +162,7 @@ export default function RecipePage() {
               </>
             }
             </div>
+            <div className='edit-recipe-div'>
             <button onClick={showEditForm}>Edit Recipe</button>
             { showEdit.length > 1 &&
               <>
@@ -158,6 +170,7 @@ export default function RecipePage() {
                 <button onClick={hideEditForm}>Cancel</button>
               </>
             }
+            </div>
           </>
          }
          <div>
@@ -186,10 +199,15 @@ export default function RecipePage() {
           </div>
           <img src={images} />
           <div className='recipe-info'>
-            <h2 className='ingredients'>Ingredients:</h2>
-            <p className="stepsBox">{ingredients}</p>
-            <h2 className='stepsTitle'>Steps:</h2>
-            <ol className='steps1'>{recipeSteps}</ol>
+          <div className='ingredients-card'>
+                <h2 className='ingredients'>Ingredients:</h2>
+                <ul className="stepsBox">{ingredientsList}</ul>
+
+              </div> 
+              <div className='steps-card'>
+          <h2 className="stepsTitle">Steps:</h2>
+          <ol className='steps1'>{recipeSteps}</ol>
+          </div>
           </div>
           { isUsersRecipe.length > 1 &&
             <>

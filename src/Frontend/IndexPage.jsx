@@ -67,7 +67,7 @@ export default function Timeline() {
         <li className='recipecard' key={recipeId}>
           <Link onClick={() => getRating(title, recipeId, userId)} to={`/recipes/${recipeId}`}>
             <h4 className='title'>{title}</h4>
-            <img className='thumbnail' alt='' src={images} />
+            <img className='thumbnail' alt={title} src={images} />
             <p className='trunc'>{steps}</p>
           </Link>
           {/* <p>{steps}</p> */}
