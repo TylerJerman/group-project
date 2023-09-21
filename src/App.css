@@ -132,15 +132,20 @@ textarea {
 
 .ingredients
 {
-  color: #ee3527;
+  color: #5C946E;
   font-size: 30px;
   margin-bottom: -20px;
 }
 
 .stepsTitle
 {
-  color: #ee3627;
+  color: #5C946E;
   font-size: 30px;
   margin-bottom: -20px;
   margin-top: -10px;
+}
+
+.stepsBox
+{
+  display: inline-block
 }

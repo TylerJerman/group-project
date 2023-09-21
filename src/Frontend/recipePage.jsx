@@ -95,9 +95,10 @@ export default function RecipePage() {
     return <li>
       <label class="container">{ingredient}
       <input  type="checkbox" />
-      <span class="checkmark"></span>
+      <span class="checkmark"> </span>
       </label>
     </li>
+  });
 
   const hideEditForm = () =>
   {
@@ -111,7 +112,7 @@ export default function RecipePage() {
     if (ratingMessage)
     {
       return (
-       <div>
+        <>
          <div>
            <h1 className='recipe-title'>{title}</h1>
            { userName &&
@@ -132,12 +133,10 @@ export default function RecipePage() {
          </div>
          <img className='recipe-image' alt={images} src={images} />
          {console.log(images)}
-         <div className='recipe-info'>
           <h2 className='ingredients'>Ingredients:</h2>
-          <p className="stepsBox">{ingredients}</p>
+          <ul className="stepsBox">{ingredientsList}</ul>
           <h2 className="stepsTitle">Steps:</h2>
           <ol className='steps1'>{recipeSteps}</ol>
-         </div>
          { isUsersRecipe.length > 1 &&
           <>
             <div>
@@ -163,13 +162,13 @@ export default function RecipePage() {
          <div>
           <Comments comments={comments} recipeId={recipeId} />
          </div>
-       </div>
+      </>
      );
     }
     else
     {
       return (
-        <div>
+        <>
           <div>
             <h1>{title}</h1>
             { userName &&
@@ -185,12 +184,10 @@ export default function RecipePage() {
             }
           </div>
           <img src={images} />
-          <div className='recipe-info'>
             <h2 className='ingredients'>Ingredients:</h2>
-            <p className="stepsBox">{ingredients}</p>
+            <ul className="stepsBox">{ingredientsList}</ul>
             <h2 className='stepsTitle'>Steps:</h2>
             <ol className='steps1'>{recipeSteps}</ol>
-          </div>
           { isUsersRecipe.length > 1 &&
             <>
               <div>
@@ -216,7 +213,7 @@ export default function RecipePage() {
           <div>
             <Comments comments={comments} recipeId={recipeId} />
           </div>
-        </div>
+        </>
       );
     }
 }
