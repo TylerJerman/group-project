@@ -26,7 +26,7 @@ export default function Comments({comments, commentId}) {
     if (userName === userName1) {
       return (
         <div key={commentId}>
-            <p><Link to={`/users/${userId}`}>{userName}</Link>: {message}</p>
+            <p><Link className="comment" to={`/users/${userId}`}>{userName}</Link>: {message}</p>
           <div>
             <button onClick={() => deleteComment(commentId, recipeId)}>Delete</button>
           </div>
@@ -36,7 +36,7 @@ export default function Comments({comments, commentId}) {
     else {
       return (
         <div key={commentId}>
-          <p><Link to={`/users/${userId}`}>{userName}</Link>: {message}</p>
+          <p><Link className="comment" to={`/users/${userId}`}>{userName}</Link>: {message}</p>
         </div>
       )
     }

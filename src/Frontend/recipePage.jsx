@@ -184,10 +184,10 @@ export default function RecipePage() {
             }
           </div>
           <img src={images} />
-            <h2 className='ingredients'>Ingredients:</h2>
-            <ul className="stepsBox">{ingredientsList}</ul>
-            <h2 className='stepsTitle'>Steps:</h2>
-            <ol className='steps1'>{recipeSteps}</ol>
+          <h2 className='ingredients'>Ingredients:</h2>
+          <ul className="stepsBox">{ingredientsList}</ul>
+          <h2 className='stepsTitle'>Steps:</h2>
+          <ol className='steps1'>{recipeSteps}</ol>
           { isUsersRecipe.length > 1 &&
             <>
               <div>

@@ -147,5 +147,10 @@ textarea {
 
 .stepsBox
 {
-  display: inline-block
+  display: inline-block;
+}
+
+.comment 
+{
+  color: #5C946E;
 }
