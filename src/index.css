@@ -47,9 +47,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
+  color: #E7D7C1;
 }
 button:hover {
   border-color: #ff8929;
@@ -84,7 +85,7 @@ ol {
 
 .recipecard {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   /* font-size: x-large; */
@@ -96,8 +97,15 @@ ol {
   margin: 20px;
   padding: 20px;
   background: #1a1a1a;
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 400px;
+  max-height: 400px;
   
-  
+}
+
+.recipe-image {
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
 }
 
 .recipecard:hover {
@@ -128,11 +136,23 @@ ol {
   margin-left: 40px;
 }
 
+.recipe-title {
+  display: flex;
+  flex-flow: row;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 .recipe-info {
   display: flex;
   flex-flow: row wrap;
   /* align-items: center; */
   justify-content: center;
+}
+
+.ingredients-card {
+  display: flex;
+  flex-flow: column;
 }
 
 

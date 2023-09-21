@@ -100,20 +100,25 @@ export default function RecipePage() {
     </li>
   });
 
+
   const hideEditForm = () =>
   {
     setShowEdit('')
   }
 
   const recipeSteps = steps.map((step) => {
-   return <li className="step">{step}</li>
+   return <>
+
+    <li className="step">{step}</li><hr/>
+   
+   </>
   })
   
     if (ratingMessage)
     {
       return (
-        <>
-         <div>
+       <div >
+         <div className='recipe-title'>
            <h1 className='recipe-title'>{title}</h1>
            { userName &&
              <div>
@@ -133,13 +138,21 @@ export default function RecipePage() {
          </div>
          <img className='recipe-image' alt={images} src={images} />
          {console.log(images)}
-          <h2 className='ingredients'>Ingredients:</h2>
-          <ul className="stepsBox">{ingredientsList}</ul>
+         <div className='recipe-info'>
+
+              <div className='ingredients-card'>
+                <h2 className='ingredients'>Ingredients:</h2>
+                <ul className="stepsBox">{ingredientsList}</ul>
+
+              </div> 
+          <div className='steps-card'>
           <h2 className="stepsTitle">Steps:</h2>
           <ol className='steps1'>{recipeSteps}</ol>
+          </div>
+         </div>
          { isUsersRecipe.length > 1 &&
           <>
-            <div>
+            <div className='delete-recipe-div'>
             { youSure.length < 1 &&
               <button onClick={areYouSure}>Delete Recipe</button>
             }
@@ -150,6 +163,7 @@ export default function RecipePage() {
               </>
             }
             </div>
+            <div className='edit-recipe-div'>
             <button onClick={showEditForm}>Edit Recipe</button>
             { showEdit.length > 1 &&
               <>
@@ -157,6 +171,7 @@ export default function RecipePage() {
                 <button onClick={hideEditForm}>Cancel</button>
               </>
             }
+            </div>
           </>
          }
          <div>
@@ -184,10 +199,17 @@ export default function RecipePage() {
             }
           </div>
           <img src={images} />
-          <h2 className='ingredients'>Ingredients:</h2>
-          <ul className="stepsBox">{ingredientsList}</ul>
-          <h2 className='stepsTitle'>Steps:</h2>
+          <div className='recipe-info'>
+          <div className='ingredients-card'>
+                <h2 className='ingredients'>Ingredients:</h2>
+                <ul className="stepsBox">{ingredientsList}</ul>
+
+              </div> 
+              <div className='steps-card'>
+          <h2 className="stepsTitle">Steps:</h2>
           <ol className='steps1'>{recipeSteps}</ol>
+          </div>
+          </div>
           { isUsersRecipe.length > 1 &&
             <>
               <div>
